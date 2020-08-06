@@ -1,0 +1,24 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/top_bar"/>
+    <RelativeLayout
+        android:background="@drawable/theme_bg_yellow"
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+        <com.wag.gamebox.ui.view.NavitationLayout
+            android:background="@color/themeWhite"
+            android:id="@+id/nav_sevice"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></com.wag.gamebox.ui.view.NavitationLayout>
+    </RelativeLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_sevice"
+        android:layout_below="@+id/nav_info"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></android.support.v4.view.ViewPager>
+
+
+</LinearLayout>

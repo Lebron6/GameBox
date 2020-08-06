@@ -1,0 +1,42 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@null"
+        android:scrollbars="none"
+        android:overScrollMode="never"
+        >
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical">
+
+          <HorizontalScrollView
+              android:id="@+id/gameInfo_HorizontalScrollView"
+              android:background="#f1f3f2"
+              android:layout_width="fill_parent"
+              android:layout_height="240.0dip"
+              android:layout_marginLeft="10.0dip"
+              android:layout_marginRight="10.0dip"
+              android:layout_marginTop="10.0dip"
+              android:scrollbars="none"
+              android:visibility="visible">
+             <LinearLayout
+                 android:id="@+id/gameInfo_ImagesLayout"
+                 android:layout_width="fill_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center_vertical"
+                 android:orientation="horizontal"/>
+          </HorizontalScrollView>
+
+        <include layout="@layout/game_details_bri_bristext" />
+
+ </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

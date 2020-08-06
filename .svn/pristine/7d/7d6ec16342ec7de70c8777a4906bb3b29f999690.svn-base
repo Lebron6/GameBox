@@ -1,0 +1,90 @@
+// Generated code from Butter Knife. Do not modify!
+package com.quantark.dlgamebox.ui.activity;
+
+import android.support.annotation.CallSuper;
+import android.support.annotation.UiThread;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import butterknife.Unbinder;
+import butterknife.internal.DebouncingOnClickListener;
+import butterknife.internal.Utils;
+import com.quantark.dlgamebox.R;
+import java.lang.IllegalStateException;
+import java.lang.Override;
+
+public class RegisterActivity_ViewBinding implements Unbinder {
+  private RegisterActivity target;
+
+  private View view2131165525;
+
+  private View view2131165545;
+
+  @UiThread
+  public RegisterActivity_ViewBinding(RegisterActivity target) {
+    this(target, target.getWindow().getDecorView());
+  }
+
+  @UiThread
+  public RegisterActivity_ViewBinding(final RegisterActivity target, View source) {
+    this.target = target;
+
+    View view;
+    target.viewStatusBar = Utils.findRequiredViewAsType(source, R.id.view_status_bar, "field 'viewStatusBar'", TextView.class);
+    target.ivBack = Utils.findRequiredViewAsType(source, R.id.iv_back, "field 'ivBack'", ImageView.class);
+    target.title = Utils.findRequiredViewAsType(source, R.id.title, "field 'title'", TextView.class);
+    target.ivShare = Utils.findRequiredViewAsType(source, R.id.iv_share, "field 'ivShare'", ImageView.class);
+    target.ivSreach = Utils.findRequiredViewAsType(source, R.id.iv_sreach, "field 'ivSreach'", ImageView.class);
+    target.layoutTop = Utils.findRequiredViewAsType(source, R.id.layout_top, "field 'layoutTop'", RelativeLayout.class);
+    target.etAccount = Utils.findRequiredViewAsType(source, R.id.et_account, "field 'etAccount'", EditText.class);
+    target.txtCode = Utils.findRequiredViewAsType(source, R.id.txt_code, "field 'txtCode'", TextView.class);
+    target.etPhoneCode = Utils.findRequiredViewAsType(source, R.id.et_phone_code, "field 'etPhoneCode'", EditText.class);
+    view = Utils.findRequiredView(source, R.id.tv_get_phone_code, "field 'tvGetPhoneCode' and method 'onViewClicked'");
+    target.tvGetPhoneCode = Utils.castView(view, R.id.tv_get_phone_code, "field 'tvGetPhoneCode'", TextView.class);
+    view2131165525 = view;
+    view.setOnClickListener(new DebouncingOnClickListener() {
+      @Override
+      public void doClick(View p0) {
+        target.onViewClicked(p0);
+      }
+    });
+    target.etPassword = Utils.findRequiredViewAsType(source, R.id.et_password, "field 'etPassword'", EditText.class);
+    view = Utils.findRequiredView(source, R.id.tv_register, "field 'tvRegister' and method 'onViewClicked'");
+    target.tvRegister = Utils.castView(view, R.id.tv_register, "field 'tvRegister'", TextView.class);
+    view2131165545 = view;
+    view.setOnClickListener(new DebouncingOnClickListener() {
+      @Override
+      public void doClick(View p0) {
+        target.onViewClicked(p0);
+      }
+    });
+  }
+
+  @Override
+  @CallSuper
+  public void unbind() {
+    RegisterActivity target = this.target;
+    if (target == null) throw new IllegalStateException("Bindings already cleared.");
+    this.target = null;
+
+    target.viewStatusBar = null;
+    target.ivBack = null;
+    target.title = null;
+    target.ivShare = null;
+    target.ivSreach = null;
+    target.layoutTop = null;
+    target.etAccount = null;
+    target.txtCode = null;
+    target.etPhoneCode = null;
+    target.tvGetPhoneCode = null;
+    target.etPassword = null;
+    target.tvRegister = null;
+
+    view2131165525.setOnClickListener(null);
+    view2131165525 = null;
+    view2131165545.setOnClickListener(null);
+    view2131165545 = null;
+  }
+}

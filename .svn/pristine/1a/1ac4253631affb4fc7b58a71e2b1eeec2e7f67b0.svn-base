@@ -1,0 +1,106 @@
+package com.quantark.dlgamebox.entity;
+
+/**
+ * Created by James on 2018/10/30.
+ */
+public class ShareInfo {
+    /**
+     * code : 200
+     * msg : 提交成功
+     * time : 1540881288
+     * data : {"qrcode":"二维码","title":"分享标题","content":"分享简介","appLogo":"logo","url":"分享链接"}
+     */
+
+    private String code;
+    private String msg;
+    private String time;
+    private DataBean data;
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public DataBean getData() {
+        return data;
+    }
+
+    public void setData(DataBean data) {
+        this.data = data;
+    }
+
+    public static class DataBean {
+        /**
+         * qrcode : 二维码
+         * title : 分享标题
+         * content : 分享简介
+         * appLogo : logo
+         * url : 分享链接
+         */
+
+        private String qrcode;
+        private String title;
+        private String content;
+        private String appLogo;
+        private String url;
+
+        public String getQrcode() {
+            return qrcode;
+        }
+
+        public void setQrcode(String qrcode) {
+            this.qrcode = qrcode;
+        }
+
+        public String getTitle() {
+            return title;
+        }
+
+        public void setTitle(String title) {
+            this.title = title;
+        }
+
+        public String getContent() {
+            return content;
+        }
+
+        public void setContent(String content) {
+            this.content = content;
+        }
+
+        public String getAppLogo() {
+            return appLogo;
+        }
+
+        public void setAppLogo(String appLogo) {
+            this.appLogo = appLogo;
+        }
+
+        public String getUrl() {
+            return url;
+        }
+
+        public void setUrl(String url) {
+            this.url = url;
+        }
+    }
+}

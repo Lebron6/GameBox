@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="#F7F7F7"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+    <TextView
+        android:visibility="visible"
+        android:background="@drawable/theme_bg_yellow"
+        android:id="@+id/view_status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_margin_top"
+        />
+    <RelativeLayout
+        android:id="@+id/layout_top"
+        android:layout_centerVertical="true"
+        android:layout_width="fill_parent"
+        android:layout_height="45.0dp"
+        android:background="@drawable/theme_bg_yellow"
+        android:gravity="center_vertical" >
+        <TextView android:layout_centerVertical="true"
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="管理"
+            android:maxLength="15"
+            android:layout_centerInParent="true"
+            android:textColor="@color/themeWhite"
+            android:textSize="18dp"
+            >
+        </TextView>
+
+        <ImageView
+            android:id="@+id/iv_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="13.299988dip"
+            android:background="@drawable/btn_style_return"
+            android:src="@mipmap/icon_share"
+            android:visibility="gone" />
+        <ImageView
+            android:id="@+id/iv_sreach"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="13.299988dip"
+            android:background="@drawable/btn_style_return"
+            android:src="@mipmap/gift_nav_search"
+            android:visibility="gone" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/layout_updata_manger"
+        android:layout_width="match_parent"
+        android:layout_height="56dp">
+        
+        <ImageView
+            android:background="@mipmap/icon_clock"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:layout_width="22dp"
+            android:layout_height="22dp" />
+
+        <TextView  android:layout_centerVertical="true"
+            android:textSize="15sp"
+            android:layout_marginLeft="53dp"
+            android:text="更新管理"
+            android:textColor="#666666"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:background="@mipmap/nav_back" android:layout_centerVertical="true"
+            android:layout_marginRight="16dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="16dp"
+            android:layout_width="22dp"
+            android:layout_height="22dp" />
+        <View
+            android:layout_alignParentBottom="true"
+            android:background="@color/themeGrayLine"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/layout_settings"
+        android:layout_width="match_parent"
+        android:layout_height="56dp">
+
+        <ImageView
+            android:background="@mipmap/icon_settings"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:layout_width="22dp"
+            android:layout_height="22dp" />
+        <TextView  android:layout_centerVertical="true"
+            android:textSize="15sp"
+            android:layout_marginLeft="53dp"
+            android:text="设置"
+            android:textColor="#666666"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:background="@mipmap/nav_back" android:layout_centerVertical="true"
+            android:layout_marginRight="16dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="16dp"
+            android:layout_width="22dp"
+            android:layout_height="22dp" />
+        <View
+            android:layout_alignParentBottom="true"
+            android:background="@color/themeGrayLine"
+            android:layout_width="match_parent"
+            android:layout_height="0.3dp"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/layout_feed_back"
+        android:layout_width="match_parent"
+        android:layout_height="56dp">
+
+        <ImageView
+            android:background="@mipmap/icon_list"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:layout_width="22dp"
+            android:layout_height="22dp" />
+        <TextView  android:layout_centerVertical="true"
+            android:textSize="15sp"
+            android:layout_marginLeft="53dp"
+            android:text="问题与建议"
+            android:textColor="#666666"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:background="@mipmap/nav_back" android:layout_centerVertical="true"
+            android:layout_marginRight="16dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="16dp"
+            android:layout_width="22dp"
+            android:layout_height="22dp" />
+        <View
+            android:layout_alignParentBottom="true"
+            android:background="@color/themeGrayLine"
+            android:layout_width="match_parent"
+            android:layout_height="0.3dp"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/layout_v_updata"
+        android:layout_width="match_parent"
+        android:layout_height="56dp">
+
+        <ImageView
+            android:background="@mipmap/icon_search"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:layout_width="22dp"
+            android:layout_height="22dp" />
+        <TextView  android:layout_centerVertical="true"
+            android:textSize="15sp"
+            android:layout_marginLeft="53dp"
+            android:text="检查更新"
+            android:textColor="#666666"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:background="@mipmap/nav_back" android:layout_centerVertical="true"
+            android:layout_marginRight="16dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="16dp"
+            android:layout_width="22dp"
+            android:layout_height="22dp" />
+        <View
+            android:layout_alignParentBottom="true"
+            android:background="@color/themeGrayLine"
+            android:layout_width="match_parent"
+            android:layout_height="0.3dp"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/layout_about"
+        android:layout_width="match_parent"
+        android:layout_height="56dp">
+
+        <ImageView
+            android:background="@mipmap/icon_user"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:layout_width="22dp"
+            android:layout_height="22dp" />
+        <TextView  android:layout_centerVertical="true"
+            android:textSize="15sp"
+            android:layout_marginLeft="53dp"
+            android:text="关于"
+            android:textColor="#666666"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:background="@mipmap/nav_back" android:layout_centerVertical="true"
+            android:layout_marginRight="16dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="16dp"
+            android:layout_width="22dp"
+            android:layout_height="22dp" />
+        <View
+            android:layout_alignParentBottom="true"
+            android:background="@color/themeGrayLine"
+            android:layout_width="match_parent"
+            android:layout_height="0.3dp"/>
+    </RelativeLayout>
+</LinearLayout>

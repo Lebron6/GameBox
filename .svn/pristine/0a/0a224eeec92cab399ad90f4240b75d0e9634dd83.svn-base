@@ -1,0 +1,225 @@
+package com.quantark.dlgamebox.ui.fragment;
+
+import android.graphics.drawable.Drawable;
+import android.os.Message;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
+
+import com.google.gson.Gson;
+import com.quantark.dlgamebox.R;
+import com.quantark.dlgamebox.callback.FlashViewListener;
+import com.quantark.dlgamebox.tools.PreferenceUtils;
+import com.quantark.dlgamebox.tools.RecyclerViewHelper;
+import com.quantark.dlgamebox.tools.ToastUtil;
+import com.quantark.dlgamebox.tools.Utils;
+import com.quantark.dlgamebox.ui.activity.ClassiFicationActivity;
+import com.quantark.dlgamebox.ui.activity.DownLoadingActivity;
+import com.quantark.dlgamebox.ui.activity.GameDeatailsActivity;
+import com.quantark.dlgamebox.ui.activity.HotGameCenterActivity;
+import com.quantark.dlgamebox.ui.activity.LoginActivity;
+import com.quantark.dlgamebox.ui.activity.MyGameActivity;
+import com.quantark.dlgamebox.ui.activity.QueryActivity;
+import com.quantark.dlgamebox.ui.activity.RankingActivity;
+import com.quantark.dlgamebox.ui.activity.ServiceListActivity;
+import com.quantark.dlgamebox.ui.adapter.HotGameListAdapter;
+import com.quantark.dlgamebox.ui.view.FlashView;
+import com.quantark.dlgamebox.ui.view.NotifyingScrollView;
+import com.quantark.dlgamebox.ui.view.effect.EffectConstants;
+
+import org.xutils.http.RequestParams;
+
+import java.util.ArrayList;
+
+import com.quantark.dlgamebox.api.BaseUrl;
+import com.quantark.dlgamebox.api.Constant;
+import com.quantark.dlgamebox.api.HttpRequestUtils;
+import butterknife.BindView;
+import butterknife.OnClick;
+import com.quantark.dlgamebox.entity.HomeData;
+
+/**
+ * Created by LeBron on 2017/2/6.
+ */
+
+public class Home extends BaseFragment {
+
+
+    @BindView(R.id.view_status_bar)
+    TextView viewStatusBar;
+    @BindView(R.id.flash_view)
+    FlashView flashView;
+    @BindView(R.id.center_my_game)
+    LinearLayout centerMyGame;
+    @BindView(R.id.center_classification)
+    LinearLayout centerClassification;
+    @BindView(R.id.center_ranking)
+    LinearLayout centerRanking;
+    @BindView(R.id.textView)
+    TextView textView;
+    @BindView(R.id.center_service)
+    LinearLayout centerService;
+    @BindView(R.id.tu1)
+    ImageView tu1;
+    @BindView(R.id.relativeLayout_to_hot)
+    RelativeLayout relativeLayoutToHot;
+    @BindView(R.id.rv_hot)
+    RecyclerView rvHot;
+    @BindView(R.id.scrollView_home)
+    NotifyingScrollView scrollViewHome;
+    @BindView(R.id.my_info)
+    ImageView myInfo;
+    @BindView(R.id.logo1)
+    RelativeLayout logo1;
+    @BindView(R.id.search_text)
+    TextView searchText;
+    @BindView(R.id.imageView1)
+    ImageView imageView1;
+    @BindView(R.id.view_search)
+    RelativeLayout viewSearch;
+    @BindView(R.id.title_download)
+    ImageView titleDownload;
+    @BindView(R.id.downloading_count)
+    TextView downloadingCount;
+    @BindView(R.id.top_bar)
+    RelativeLayout topBar;
+    @BindView(R.id.title_view)
+    LinearLayout titleView;
+    private Drawable actionBarbackgroundDrawable;
+    private HotGameListAdapter adapter;
+    private HomeData homeData;
+
+    @Override
+    protected int attachLayoutRes() {
+        return R.layout.fragment_home;
+    }
+
+    @Override
+    protected void initViews() {
+        adapter = new HotGameListAdapter(getActivity());
+        actionBarbackgroundDrawable = getResources().getDrawable(R.color.themeYellow);
+        actionBarbackgroundDrawable.setAlpha(0);
+        topBar.setBackgroundDrawable(actionBarbackgroundDrawable);
+        scrollViewHome.setOnScrollChangedListener(onScrollChangedListener);
+        flashView.setOnPageClickListener(new FlashViewListener() {
+            @Override
+            public void onClick(int position) {
+                GameDeatailsActivity.actionStart(getActivity(),homeData.getData().getCarousel().get(position).getId());
+            }
+        });
+        HttpRequestUtils requestUtils=new HttpRequestUtils(mHandler);
+        requestUtils.doGet(new RequestParams(BaseUrl.getInstence().getHomeDataUrl()));
+    }
+
+
+    private NotifyingScrollView.OnScrollChangedListener onScrollChangedListener = new NotifyingScrollView.OnScrollChangedListener() {
+        @Override
+        public void OnScrollChanged(ScrollView who, int l, int t, int oldl, int oldt) {
+            final int headerHeight = topBar.getHeight();
+            final float ratio = (float) Math.min(Math.max(t, 0), headerHeight) / headerHeight;
+            final int newAlpha = (int) (ratio * 255);
+            actionBarbackgroundDrawable.setAlpha(newAlpha);
+            viewStatusBar.setAlpha(newAlpha);
+        }
+    };
+
+    @Override
+    protected void initDatas() {
+        if (adapter != null) {
+            adapter.start();
+            adapter.state();
+            adapter.notifyDataSetChanged();
+        }
+    }
+    @Override
+    public void onPause() {
+        if (adapter != null) {
+            adapter.delete();
+        }
+        super.onPause();
+    }
+
+    private android.os.Handler mHandler=new android.os.Handler()
+    {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what)
+            {
+                case Constant.REQUEST_SUCCESS:
+                    Log.e("获取首页上数据",msg.obj.toString());
+                    try {
+                        homeData = new Gson().fromJson(msg.obj.toString(),HomeData.class);
+                        if (homeData !=null){
+                            if (homeData.getData().getCarousel()!=null&& homeData.getData().getCarousel().size()>0){
+                                ArrayList<String> imageUrls = new ArrayList<String>();
+                                for (int i = 0; i < homeData.getData().getCarousel().size() ; i++) {
+                                    imageUrls.add(homeData.getData().getCarousel().get(i).getMobile_carousel_img());
+                                }
+                                flashView.setImageUris(imageUrls);
+                                flashView.setEffect(EffectConstants.DEFAULT_EFFECT);//更改图片切换的动画效果
+                            }
+                            if (homeData.getData().getHot()!=null&& homeData.getData().getHot().size()>0){
+                                adapter.setDatas(homeData.getData().getHot());
+                                RecyclerViewHelper.initRecyclerViewV(getActivity(),rvHot,true, adapter);
+                                adapter.setOnItemClickListener(new HotGameListAdapter.OnItemClickListener() {
+                                    @Override
+                                    public void onItemLongClick(View view, int position) {
+                                        GameDeatailsActivity.actionStart(getActivity(),  homeData.getData().getHot().get(position).getId());
+                                    }
+                                });
+                                ViewGroup.LayoutParams layoutParams =  rvHot.getLayoutParams();
+                                layoutParams.height = Utils.dip2px(80)* homeData.getData().getHot().size();
+                                rvHot.setLayoutParams(layoutParams);
+                                rvHot.setFocusable(false);
+                            }
+                        }
+                    }catch (Exception e){
+                        e.printStackTrace();
+                        ToastUtil.showToast("解析数据异常");
+                    }
+                    break;
+                case Constant.REQUEST_FAIL:
+                    Log.e("获取首页上数据",msg.obj.toString());
+                    break;
+            }
+        }
+    };
+
+    @OnClick({R.id.center_my_game, R.id.center_classification, R.id.center_ranking, R.id.center_service, R.id.relativeLayout_to_hot, R.id.view_search, R.id.title_download})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.center_my_game:
+                if (PreferenceUtils.getInstance().getLoginStatus()==true){
+                    MyGameActivity.actionStart(getActivity());
+                }else{
+                    LoginActivity.actionStart(getActivity());
+                }
+                break;
+            case R.id.center_classification:
+                ClassiFicationActivity.actionStart(getActivity());
+                break;
+            case R.id.center_ranking:
+                RankingActivity.actionStart(getActivity());
+                break;
+            case R.id.center_service:
+                ServiceListActivity.actionStart(getActivity());
+                break;
+            case R.id.relativeLayout_to_hot:
+                HotGameCenterActivity.actionStart(getActivity());
+                break;
+            case R.id.view_search:
+                QueryActivity.actionStart(getActivity());
+                break;
+            case R.id.title_download:
+                DownLoadingActivity.actionStart(getActivity());
+                break;
+        }
+    }
+}

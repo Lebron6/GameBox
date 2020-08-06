@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="afterDescendants"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.wag.gamebox.ui.view.FilletImageView
+            android:id="@+id/iv_pic"
+            android:layout_width="168dp"
+            android:layout_height="110dp"
+            />
+
+        <RelativeLayout
+            android:layout_width="168dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_game_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="一拳超人"
+                android:layout_centerVertical="true"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tv_down_load"
+                android:layout_width="55dp"
+                android:layout_height="25.0dip"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center_vertical|right"
+                android:background="@drawable/text_bg_selector_m"
+                android:gravity="center"
+                android:text="下载"
+                android:textColor="@drawable/text_color_selector_m"
+                android:textSize="14sp"></TextView>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:layout_width="168dp"
+            android:layout_marginTop="3dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/home_game_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:singleLine="true"
+                android:text="12000MB"
+                android:textColor="@color/themeGrayText"
+                android:textSize="12sp" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="3dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="3dp"
+                android:background="@color/themeGrayText" />
+
+            <RatingBar
+android:layout_gravity="center"
+                android:id="@+id/rb_bar"
+                android:numStars="5"
+            android:rating="3"
+                style="@style/roomRatingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </RatingBar>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

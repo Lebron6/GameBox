@@ -1,0 +1,42 @@
+// Generated code from Butter Knife. Do not modify!
+package com.quantark.dlgamebox.ui.adapter;
+
+import android.support.annotation.CallSuper;
+import android.support.annotation.UiThread;
+import android.view.View;
+import android.widget.TextView;
+import butterknife.Unbinder;
+import butterknife.internal.Utils;
+import com.quantark.dlgamebox.R;
+import com.quantark.dlgamebox.ui.view.FilletImageView;
+import java.lang.IllegalStateException;
+import java.lang.Override;
+
+public class HomeGiftAdapter$ViewHolder_ViewBinding implements Unbinder {
+  private HomeGiftAdapter.ViewHolder target;
+
+  @UiThread
+  public HomeGiftAdapter$ViewHolder_ViewBinding(HomeGiftAdapter.ViewHolder target, View source) {
+    this.target = target;
+
+    target.ivGiftIcon = Utils.findRequiredViewAsType(source, R.id.iv_gift_icon, "field 'ivGiftIcon'", FilletImageView.class);
+    target.tvGameName = Utils.findRequiredViewAsType(source, R.id.tv_game_name, "field 'tvGameName'", TextView.class);
+    target.tvGiftNum = Utils.findRequiredViewAsType(source, R.id.tv_gift_num, "field 'tvGiftNum'", TextView.class);
+    target.tvGiftType = Utils.findRequiredViewAsType(source, R.id.tv_gift_type, "field 'tvGiftType'", TextView.class);
+    target.tvSee = Utils.findRequiredViewAsType(source, R.id.tv_see, "field 'tvSee'", TextView.class);
+  }
+
+  @Override
+  @CallSuper
+  public void unbind() {
+    HomeGiftAdapter.ViewHolder target = this.target;
+    if (target == null) throw new IllegalStateException("Bindings already cleared.");
+    this.target = null;
+
+    target.ivGiftIcon = null;
+    target.tvGameName = null;
+    target.tvGiftNum = null;
+    target.tvGiftType = null;
+    target.tvSee = null;
+  }
+}

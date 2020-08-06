@@ -1,0 +1,94 @@
+package com.wag.gamebox.ui.view;
+
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.view.View;
+import android.widget.TextView;
+import com.wag.gamebox.ui.activity.GameDetailsShareActivity;
+import com.wag.gamebox.ui.activity.QueryActivity;
+
+/**
+ * Created by Administrator on 2017/1/3.
+ */
+
+public class TitleBarManger {
+
+    private static TitleBarManger titleBarManger;
+    private Activity context;
+    private TextView wenzi;
+    private View back;
+    private View search;
+    private View share;
+
+    /**
+     * 获取一个实例
+     * @return
+     */
+    public static TitleBarManger getInsetance() {
+        if (titleBarManger==null){
+            titleBarManger = new TitleBarManger();
+        }
+        return titleBarManger;
+    }
+
+    /**
+     * set一个上下文
+     * @param con
+     */
+    public void setContext(Activity con) {
+        this.context = con;
+    }
+
+
+    /**
+     * 设置标题
+     * @param title
+     */
+    public void setTitle(String title) {
+        wenzi = (TextView) context.findViewById(findId(context, "title"));
+        wenzi.setText(title);
+    }
+
+    public void setBack(){
+        back = context.findViewById(findId(context, "layout_back"));
+        back.setVisibility(View.VISIBLE);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                context.finish();
+            }
+        });
+    }
+
+
+    public void setShare(){
+        share = context.findViewById(findId(context, "iv_share"));
+        share.setVisibility(View.VISIBLE);
+    }
+    public void setSearch(){
+        search = context.findViewById(findId(context, "iv_sreach"));
+        search.setVisibility(View.VISIBLE);
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                context.startActivity(new Intent(context, QueryActivity.class));
+            }
+        });
+    }
+
+    /**
+     * 根据上下文获取资源ID
+     * @param context
+     * @param id
+     * @return
+     */
+    public int findId(Context context, String id) {
+        if (context != null) {
+            Resources resource = context.getResources();
+            return resource.getIdentifier(id, "id", context.getPackageName());
+        }
+        return 0;
+    }
+}

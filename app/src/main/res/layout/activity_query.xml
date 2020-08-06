@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parvant"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+<View
+    android:background="@drawable/theme_bg_yellow"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/toolbar_margin_top"/>
+    <RelativeLayout
+        android:id="@+id/search_top"
+        android:layout_width="fill_parent"
+        android:layout_height="49.0dp"
+        android:background="@drawable/theme_bg_yellow"
+        android:gravity="center_vertical" >
+
+        <ImageView
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/iv_back"
+            android:visibility="visible"
+            android:background="@mipmap/nav_back_c"
+            android:layout_marginLeft="13.299988dip"
+            />
+        <com.wag.gamebox.ui.view.ClearEditText
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:id="@+id/et_query"
+            android:layout_toLeftOf="@+id/iv_search"
+            android:layout_toRightOf="@+id/iv_back"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/title_bar_shape2"
+            android:layout_width="match_parent"
+            android:layout_height="33dp" />
+        <ImageView
+            android:id="@+id/iv_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="13.299988dip"
+            android:background="@drawable/btn_style_return"
+            android:src="@mipmap/gift_nav_search"
+            android:visibility="visible" />
+    </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/layout_query_history"
+        android:visibility="visible"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:text="历史搜索"
+            android:textColor="@color/themeGrayText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <android.support.v7.widget.RecyclerView
+            android:layout_marginTop="10dp"
+            android:id="@+id/rv_search_history"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+    <TextView
+        android:layout_marginTop="10dp"
+        android:id="@+id/tv_clear_history"
+        android:textSize="12sp"
+        android:gravity="center"
+        android:text="清空搜索记录"
+        android:textColor="@color/themeYellow"
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
+    </LinearLayout>
+<LinearLayout
+    android:id="@+id/layout_query_result"
+    android:visibility="gone"
+    android:padding="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_query_result"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+</LinearLayout>
+    <include layout="@layout/error_layout"/>
+</LinearLayout>

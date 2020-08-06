@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/themeWhite"
+    android:orientation="vertical">
+
+    <include layout="@layout/top_bar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_user_icon"
+                android:layout_width="37dp"
+                android:layout_height="37dp"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="毛不易"
+                    android:textColor="@color/colorTextBlack"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_comment_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2019.5.14 8:30"
+                    android:textColor="@color/themeGrayText"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_comment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="47dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="5dp"
+            android:maxLines="8"
+            android:text="蔡徐坤教你打篮球蔡徐坤教你打篮球蔡徐坤教你打篮球蔡徐坤打篮球蔡徐坤蔡徐坤教你打篮球蔡徐坤教你打篮球蔡徐坤教你打篮球蔡徐坤教你打篮球蔡徐坤教你打篮球蔡徐坤教你打篮球蔡徐坤教你打篮球蔡徐坤教你打篮球蔡徐坤教蔡徐坤篮球蔡..."
+            android:textColor="@color/colorTextBlack"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/colorBgGray" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_above="@+id/layout_bottom"
+            android:id="@+id/rv_callback"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </android.support.v7.widget.RecyclerView>
+
+        <LinearLayout
+            android:layout_above="@+id/layout_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/top_bar">
+            <include layout="@layout/error_layout" />
+        </LinearLayout>
+        <LinearLayout
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:id="@+id/layout_bottom"
+            android:gravity="center"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="45dp">
+            <TextView
+                android:id="@+id/tv_callback"
+                android:paddingLeft="20dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="280dp"
+                android:text="回复"
+                android:gravity="center_vertical"
+                android:textSize="14sp"
+                android:textColor="#999999"
+                android:background="@drawable/tv_edit_comment"
+                android:layout_height="match_parent" />
+            <TextView
+                android:id="@+id/tv_send"
+                android:text="发表"
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:gravity="center_vertical"
+                android:textSize="16sp"
+                android:textColor="@color/themeYellow"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

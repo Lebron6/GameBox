@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="260dp"
+    android:background="@drawable/item_bg_white"
+    android:layout_height="wrap_content">
+<TextView
+    android:gravity="center"
+    android:textSize="13sp"
+    android:textColor="@color/themeWhite"
+    android:text="联系客服"
+    android:background="@drawable/theme_bg_yellow"
+    android:layout_width="match_parent"
+    android:layout_height="40dp" />
+    <RelativeLayout
+        android:id="@+id/layout_recever"
+        android:visibility="visible"
+        android:gravity="center_vertical"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/gift_details_code_bg"
+        android:layout_width="match_parent"
+        android:layout_height="30dp">
+
+        <TextView
+            android:id="@+id/tv_phone_num"
+            android:textSize="12sp"
+            android:layout_marginLeft="20dp"
+            android:text="手机号码：13921770204"
+            android:textColor="@color/themeGrayText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_call"
+            android:layout_marginRight="20dp"
+            android:textColor="@color/themeYellow"
+            android:layout_alignParentRight="true"
+            android:textSize="13sp"
+            android:text="拨打"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <View
+        android:layout_marginTop="15dp"
+        android:background="@color/themeGrayLine"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"/>
+    <TextView
+        android:id="@+id/tv_close"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="关闭"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

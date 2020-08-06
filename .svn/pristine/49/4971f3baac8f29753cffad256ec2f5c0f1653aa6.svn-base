@@ -1,0 +1,462 @@
+package com.quantark.dlgamebox.ui.activity;
+
+import android.Manifest;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
+import android.support.annotation.RestrictTo;
+import android.text.TextUtils;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import com.google.gson.Gson;
+import com.quantark.dlgamebox.R;
+import com.quantark.dlgamebox.api.BaseUrl;
+import com.quantark.dlgamebox.api.Constant;
+import com.quantark.dlgamebox.api.HttpRequestUtils;
+import com.quantark.dlgamebox.entity.GetPhoneCodeResult;
+import com.quantark.dlgamebox.entity.LoginResult;
+import com.quantark.dlgamebox.entity.QQAccessTokenEntity;
+import com.quantark.dlgamebox.entity.QQUserInfo;
+import com.quantark.dlgamebox.entity.ThirdLoginResult;
+import com.quantark.dlgamebox.entity.WBUserInfo;
+import com.quantark.dlgamebox.tools.FileUtil;
+import com.quantark.dlgamebox.tools.PreferenceUtils;
+import com.quantark.dlgamebox.tools.ToastUtil;
+import com.quantark.dlgamebox.wxapi.WXEntryActivity;
+import com.sina.weibo.sdk.WbSdk;
+import com.sina.weibo.sdk.auth.AccessTokenKeeper;
+import com.sina.weibo.sdk.auth.AuthInfo;
+import com.sina.weibo.sdk.auth.Oauth2AccessToken;
+import com.sina.weibo.sdk.auth.WbAuthListener;
+import com.sina.weibo.sdk.auth.WbConnectErrorMessage;
+import com.sina.weibo.sdk.auth.sso.SsoHandler;
+import com.tencent.connect.UserInfo;
+import com.tencent.connect.common.Constants;
+import com.tencent.mm.opensdk.modelmsg.SendAuth;
+import com.tencent.mm.opensdk.openapi.IWXAPI;
+import com.tencent.mm.opensdk.openapi.WXAPIFactory;
+import com.tencent.tauth.IUiListener;
+import com.tencent.tauth.Tencent;
+import com.tencent.tauth.UiError;
+import com.zhy.m.permission.MPermissions;
+import com.zhy.m.permission.PermissionDenied;
+import com.zhy.m.permission.PermissionGrant;
+
+import org.xutils.common.Callback;
+import org.xutils.http.RequestParams;
+import org.xutils.x;
+
+import butterknife.BindView;
+import butterknife.OnClick;
+
+import static com.quantark.dlgamebox.api.Constant.REQUEST_FAIL;
+import static com.quantark.dlgamebox.api.Constant.REQUEST_SUCCESS;
+
+/**
+ * Created by James on 2018/10/9.
+ */
+public class LoginActivity extends BaseActivity {
+
+    @BindView(R.id.iv_back)
+    ImageView ivBack;
+    @BindView(R.id.tv_title)
+    TextView tvTitle;
+    @BindView(R.id.layout_top)
+    RelativeLayout layoutTop;
+    @BindView(R.id.layout_title)
+    RelativeLayout layoutTitle;
+    @BindView(R.id.et_account)
+    EditText etAccount;
+    @BindView(R.id.et_login_password)
+    EditText etLoginPassword;
+    @BindView(R.id.cb_show_password)
+    CheckBox cbShowPassword;
+    @BindView(R.id.layout_password)
+    RelativeLayout layoutPassword;
+    @BindView(R.id.tv_login)
+    TextView tvLogin;
+    @BindView(R.id.tv_to_register)
+    TextView tvToRegister;
+    @BindView(R.id.tv_forget_password)
+    TextView tvForgetPassword;
+    @BindView(R.id.img_weibo)
+    ImageView imgWeibo;
+    @BindView(R.id.img_qq)
+    ImageView imgQq;
+    @BindView(R.id.img_wechat)
+    ImageView imgWechat;
+    private Tencent mTencent;
+    private AuthInfo mAuthInfo;
+    private Oauth2AccessToken mAccessToken;
+    private SsoHandler mSsoHandler;
+
+    public static void actionStart(Context context) {
+        Intent intent = new Intent(context, LoginActivity.class);
+        context.startActivity(intent);
+    }
+
+    @Override
+    protected void initTitle() {
+        if (!TextUtils.isEmpty(PreferenceUtils.getInstance().getUserToken())) {
+            MainActivity.actionStart(this);
+            finish();
+        }
+    }
+
+    @Override
+    protected int attachLayoutRes() {
+        return R.layout.activity_login;
+    }
+
+    @Override
+    protected void initViews() {
+
+        mAuthInfo = new AuthInfo(this, Constant.WEIBO_APP_KEY, Constant.REDIRECT_URL, Constant.SCOPE);
+        WbSdk.install(this, mAuthInfo);
+        mSsoHandler = new SsoHandler(LoginActivity.this);
+
+        cbShowPassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    //否则隐藏密码
+                    etLoginPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                } else {
+                    //如果选中，显示密码
+                    etLoginPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                }
+            }
+        });
+        cbShowPassword.setChecked(false);
+    }
+
+    @Override
+    protected void initDatas() {
+    }
+
+    @OnClick({R.id.iv_back, R.id.tv_login, R.id.tv_to_register, R.id.tv_forget_password, R.id.img_weibo, R.id.img_qq, R.id.img_wechat})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.iv_back:
+                finish();
+                break;
+            case R.id.tv_login:
+                if (TextUtils.isEmpty(etAccount.getText().toString())) {
+                    ToastUtil.showToast("请输入账号");
+                    return;
+                }
+                if (TextUtils.isEmpty(etLoginPassword.getText().toString())) {
+                    ToastUtil.showToast("请输入密码");
+                    return;
+                }
+                toLogin();
+                break;
+            case R.id.tv_to_register:
+                RegisterActivity.actionStart(this);
+                break;
+            case R.id.tv_forget_password:
+                ForgetPasswordActivity.actionStart(this);
+                break;
+            case R.id.img_weibo:
+                WBLogin();
+                break;
+            case R.id.img_qq:
+                QQLogin();
+                break;
+            case R.id.img_wechat:
+                WXLogin();
+                break;
+        }
+    }
+
+    private void WBLogin() {
+        if (mSsoHandler.isWbAppInstalled()){
+            mSsoHandler.authorizeClientSso(new SelfWbAuthListener());
+        }else{
+            mSsoHandler.authorizeWeb(new SelfWbAuthListener());
+        }
+    }
+
+    private class SelfWbAuthListener implements WbAuthListener {
+        @Override
+        public void onSuccess(final Oauth2AccessToken token) {
+            LoginActivity.this.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    mAccessToken = token;
+                    if (mAccessToken.isSessionValid()) {
+                        // 显示 Token
+//                        updateTokenView(false);
+                        // 保存 Token 到 SharedPreferences
+                        AccessTokenKeeper.writeAccessToken(LoginActivity.this, mAccessToken);
+                        getWeiBoUserInfo(mAccessToken);
+                    } else {
+                        ToastUtil.showToast("授权失败ppp");
+                    }
+                }
+            });
+        }
+
+        @Override
+        public void cancel() {
+            Toast.makeText(LoginActivity.this,
+                    R.string.weibosdk_demo_toast_auth_canceled, Toast.LENGTH_LONG).show();
+        }
+
+        @Override
+        public void onFailure(WbConnectErrorMessage errorMessage) {
+            Log.e("授权失败", "000");
+            Toast.makeText(LoginActivity.this, errorMessage.getErrorMessage(), Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private void QQLogin() {
+        mTencent = Tencent.createInstance(Constant.QQ_APP_ID, this);
+        if (!mTencent.isSessionValid()) {
+            mTencent.login(this, "all", iUiListener);
+        }
+    }
+
+    IUiListener iUiListener = new IUiListener() {
+        @Override
+        public void onComplete(Object response) {
+            Log.e("QQ登录", response.toString());
+            try {
+                String openidString = ((JSONObject) response).getString("openid");
+                mTencent.setOpenId(openidString);
+                mTencent.setAccessToken(((JSONObject) response).getString("access_token"), ((JSONObject) response).getString("expires_in"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            //获取QQ用户具体信息
+            UserInfo userInfo = new UserInfo(getApplicationContext(), mTencent.getQQToken());
+            userInfo.getUserInfo(qqUserInfoListener);
+        }
+
+        @Override
+        public void onError(UiError uiError) {
+            ToastUtil.showToast("登录失败:" + uiError.toString());
+        }
+
+        @Override
+        public void onCancel() {
+            ToastUtil.showToast("登录取消");
+        }
+    };
+
+    IUiListener qqUserInfoListener = new IUiListener() {
+        @Override
+        public void onComplete(Object o) {
+//            Log.e("获取QQ用户具体信息",o.toString());
+            QQUserInfo qqUserInfo = new Gson().fromJson(o.toString(), QQUserInfo.class);
+            if (!TextUtils.isEmpty(mTencent.getOpenId())) {
+                RequestParams params = new RequestParams(BaseUrl.getInstence().getThirdLoginUrl());
+                params.addParameter("openid", mTencent.getOpenId());
+                params.addParameter("type", "QQ");
+                params.addParameter("user_name", qqUserInfo.getNickname());
+                params.addParameter("avatar", qqUserInfo.getFigureurl_qq_2());
+                HttpRequestUtils httpRequestUtils = new HttpRequestUtils(sHandler);
+                httpRequestUtils.doPost(params);
+            } else {
+//                ToastUtil.showToast("获取QQ用户基本信息失败");
+            }
+        }
+
+        @Override
+        public void onError(UiError uiError) {
+            Log.v("UserInfo", "onError");
+        }
+
+        @Override
+        public void onCancel() {
+            Log.v("UserInfo", "onCancel");
+
+        }
+
+    };
+
+
+
+    private void getWeiBoUserInfo(Oauth2AccessToken mAccessToken) {
+        final RequestParams params = new RequestParams(BaseUrl.getInstence().getWBUserInfoUrl());
+        params.addParameter("uid", mAccessToken.getUid());
+        params.addParameter("access_token", mAccessToken.getToken());
+        x.http().get(params, new Callback.CommonCallback<String>() {
+
+            @Override
+            public void onCancelled(CancelledException arg0) {
+                Log.e(params.getUri(), "onCancelled");
+            }
+
+            @Override
+            public void onError(Throwable arg0, boolean arg1) {
+                Log.e(params.getUri(), "onFailure info =" + arg0.toString());
+                noticeResult(Constant.REQUEST_FAIL, "授权失败,应用审核通过前,请现在微博开放平台添加测试账号");
+            }
+
+            @Override
+            public void onFinished() {
+                Log.e(params.getUri(), "onFinished");
+            }
+
+            @Override
+            public void onSuccess(String json) {
+                noticeResult(Constant.REQUEST_SUCCESS, json);
+            }
+        });
+    }
+
+    private void noticeResult(int type, Object obj) {
+        Message msg = new Message();
+        msg.what = type;
+        msg.obj = obj;
+        if (null != wbHandler) {
+            wbHandler.sendMessage(msg);
+        }
+    }
+
+    //根据微博access_token获取微博个人信息
+    Handler wbHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case Constant.REQUEST_SUCCESS:
+                    Log.e("获取微博用户个人信息", msg.obj.toString());
+                    WBUserInfo wbUserInfo=new Gson().fromJson(msg.obj.toString(),WBUserInfo.class);
+                    if (wbUserInfo!=null&&!TextUtils.isEmpty(wbUserInfo.getIdstr())){
+                        RequestParams params = new RequestParams(BaseUrl.getInstence().getThirdLoginUrl());
+                        params.addParameter("openid",wbUserInfo.getIdstr());
+                        params.addParameter("type", "WB");
+                        params.addParameter("user_name", wbUserInfo.getName());
+                        params.addParameter("avatar", wbUserInfo.getProfile_image_url());
+                        HttpRequestUtils httpRequestUtils = new HttpRequestUtils(sHandler);
+                        httpRequestUtils.doPost(params);
+                    }else{
+                        ToastUtil.showToast("获取微博个人信息失败");
+                    }
+                    break;
+                case Constant.REQUEST_FAIL:
+                    ToastUtil.showToast(msg.obj.toString());
+                    break;
+            }
+        }
+    };
+
+    Handler sHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case REQUEST_SUCCESS:
+                    Log.e("QQ登录本地服务器获取数据", msg.obj.toString());
+                    ThirdLoginResult mThirdLoginResult = new Gson().fromJson(msg.obj.toString(), ThirdLoginResult.class);
+                    if (mThirdLoginResult != null && mThirdLoginResult.getData() != null) {
+                        PreferenceUtils.getInstance().setLoginStatus(true);
+                        PreferenceUtils.getInstance().setUserName(mThirdLoginResult.getData().getUser_login());
+                        PreferenceUtils.getInstance().setUserToken(mThirdLoginResult.getData().getToken());
+                        PreferenceUtils.getInstance().setLoginType(mThirdLoginResult.getData().getLogin_type());
+                        PreferenceUtils.getInstance().setThirdLoginType(mThirdLoginResult.getData().getThird_type());
+                        PreferenceUtils.getInstance().setOpenId(mThirdLoginResult.getData().getOpenid());
+                        MainActivity.actionStart(LoginActivity.this);
+                        finish();
+                    } else {
+                        ToastUtil.showToast("微信登录失败");
+                        finish();
+                    }
+                    break;
+                case REQUEST_FAIL:
+                    ToastUtil.showToast(msg.obj.toString());
+                    finish();
+                    break;
+            }
+        }
+    };
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (mTencent!=null){
+            mTencent.onActivityResultData(requestCode, resultCode, data, iUiListener);
+        }
+
+        if (mSsoHandler != null) {
+            mSsoHandler.authorizeCallBack(requestCode, resultCode, data);
+            return;
+        }
+
+        if (requestCode == Constants.REQUEST_API) {
+            if (requestCode == Constants.REQUEST_LOGIN) {
+                Tencent.handleResultData(data, iUiListener);
+                super.onActivityResult(requestCode, resultCode, data);
+            }
+        }
+
+    }
+
+    private void WXLogin() {
+
+        //通过WXAPIFactory工厂获取IWXApI的示例
+        IWXAPI api = WXAPIFactory.createWXAPI(this, Constant.WX_APP_ID, true);
+        if(api.isWXAppInstalled()){
+            //将应用的appid注册到微信
+            api.registerApp(Constant.WX_APP_ID);
+            SendAuth.Req req = new SendAuth.Req();
+            req.scope = "snsapi_userinfo";
+            req.state = "dlgamebox_wx_login";
+            api.sendReq(req);
+        }else{
+            ToastUtil.showToast("未安装微信客户端");
+        }
+
+    }
+
+
+    private void toLogin() {
+        tvLogin.setEnabled(false);
+        RequestParams params = new RequestParams(BaseUrl.getInstence().getAccountLoginUrl());
+        params.addParameter("user_login", etAccount.getText().toString());
+        params.addParameter("user_pass", etLoginPassword.getText().toString());
+        HttpRequestUtils httpRequestUtils = new HttpRequestUtils(mHandler);
+        httpRequestUtils.doPost(params);
+    }
+
+    Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            tvLogin.setEnabled(true);
+            switch (msg.what) {
+                case Constant.REQUEST_SUCCESS:
+                    Log.e("获取登录结果", msg.obj.toString());
+                    LoginResult result = new Gson().fromJson(msg.obj.toString(), LoginResult.class);
+                    if (result.getCode().equals("200")) {
+                        PreferenceUtils.getInstance().setLoginStatus(true);
+                        PreferenceUtils.getInstance().setUserName(result.getData().getUser_login());
+                        PreferenceUtils.getInstance().setUserToken(result.getData().getToken());
+                        PreferenceUtils.getInstance().setLoginType(result.getData().getLogin_type());
+                        MainActivity.actionStart(LoginActivity.this);
+                        finish();
+                    } else {
+                        ToastUtil.showToast(result.getMsg());
+                    }
+                    break;
+                case Constant.REQUEST_FAIL:
+                    ToastUtil.showToast(msg.obj.toString());
+                    break;
+            }
+        }
+    };
+
+
+}

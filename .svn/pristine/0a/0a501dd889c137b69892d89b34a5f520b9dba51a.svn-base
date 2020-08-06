@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="themeWhite">#fff</color>
+    <color name="themeYellow">#FF751A</color>
+    <color name="themeGrayLine">#D1D1D1</color>
+    <color name="themeGrayText">#AAABAD</color>
+    <color name="themeTransparency">#00000000</color>
+    <color name="colorStroken">#ffdbdbde</color>
+    <color name="colorHomeSeach">#80F7F7F7</color>
+    <color name="colorStrokenTr">#50F7F7F7</color>
+    <color name="colorTextBlack">#333333</color>
+    <color name="colorBgGray">#F7F7F7</color>
+</resources>

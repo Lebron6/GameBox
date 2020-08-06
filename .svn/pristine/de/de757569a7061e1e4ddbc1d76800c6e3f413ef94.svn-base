@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorBgGray"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+<include layout="@layout/top_bar"/>
+
+    <View
+        android:background="@color/colorBgGray"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+    <LinearLayout
+        android:background="@color/themeWhite"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+        <ImageView
+            android:id="@+id/iv_user_icon"
+            android:layout_marginLeft="20dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+        <TextView
+            android:id="@+id/tv_user_nickname"
+            android:layout_marginLeft="20dp"
+            android:text="头号玩家"
+            android:textSize="14sp"
+            android:textColor="@color/colorTextBlack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <View
+        android:background="@color/colorBgGray"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+    <RelativeLayout
+        android:id="@+id/layout_updata_password"
+        android:paddingRight="15dp"
+        android:paddingLeft="15dp"
+        android:background="@color/themeWhite"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        <TextView
+            android:textSize="12sp"
+            android:textColor="@color/colorTextBlack"
+            android:layout_centerVertical="true"
+            android:text="修改密码"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:textSize="12sp"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/themeGrayText"
+            android:layout_centerVertical="true"
+            android:text=">"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/layout_bind_phone"
+        android:paddingRight="15dp"
+        android:paddingLeft="15dp"
+        android:background="@color/themeWhite"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        <TextView
+            android:textSize="12sp"
+            android:textColor="@color/colorTextBlack"
+            android:layout_centerVertical="true"
+            android:text="绑定手机号码"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_phone_bind_status"
+            android:textSize="12sp"
+            android:textColor="@color/themeYellow"
+            android:layout_centerVertical="true"
+            android:text="未绑定"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_bing_phone_num"
+            android:layout_marginRight="15dp"
+            android:layout_alignParentRight="true"
+            android:textSize="12sp"
+            android:textColor="@color/colorTextBlack"
+            android:layout_centerVertical="true"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:textSize="12sp"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/themeGrayText"
+            android:layout_centerVertical="true"
+            android:text=">"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_below="@+id/layout_password"
+            android:id="@+id/tv_login_out"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="40.0dip"
+            android:layout_centerInParent="true"
+            android:textColor="@drawable/text_color_selector_m"
+            android:background="@drawable/text_bg_selector_m"
+            android:gravity="center"
+            android:text="退出账号"
+            android:textSize="14sp"
+            ></TextView></LinearLayout>
+
+<View
+    android:id="@+id/view_bottom"
+    android:background="@color/colorTextBlack"
+    android:layout_width="match_parent"
+    android:layout_height="20dp"/>
+</LinearLayout>

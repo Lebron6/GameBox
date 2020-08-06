@@ -1,0 +1,88 @@
+package com.quantark.dlgamebox.entity;
+
+/**
+ * Created by James on 2018/10/31.
+ */
+public class WXAccessTokenEntity {
+    /**
+     * access_token : 15_mrJhUnFtmHL9avR49psBxlwLnhyVWLEbGbU2lwW8-cEVsqvxp13YDZiCoCElyg_VHJXAFW1pZP5BxfEzJi9XG6q4qtB6UnG0LswjfZw2aqI
+     * expires_in : 7200
+     * refresh_token : 15_oATtc_hJ_J43elXgNx4fKSSWoRLhPgPuiaB6i3DnE6aG_q5__BZK57LQ8dzB6ScvS9t5X3wloDs0g_jXB3KREkjiRRFW5dZuegFUrl6gPcU
+     * openid : o4tG21N0JucxIi66mm6esfrBbNOc
+     * scope : snsapi_userinfo
+     * unionid : oZ1GNwEjepCsvFVMJ0a9nLu6v4iA
+     */
+
+    private String access_token;
+    private int expires_in;
+    private String refresh_token;
+    private String openid;
+    private String scope;
+    private String unionid;
+    private int errcode;
+    private String errmsg;
+
+    public int getErrcode() {
+        return errcode;
+    }
+
+    public void setErrcode(int errcode) {
+        this.errcode = errcode;
+    }
+
+    public String getErrmsg() {
+        return errmsg;
+    }
+
+    public void setErrmsg(String errmsg) {
+        this.errmsg = errmsg;
+    }
+
+    public String getAccess_token() {
+        return access_token;
+    }
+
+    public void setAccess_token(String access_token) {
+        this.access_token = access_token;
+    }
+
+    public int getExpires_in() {
+        return expires_in;
+    }
+
+    public void setExpires_in(int expires_in) {
+        this.expires_in = expires_in;
+    }
+
+    public String getRefresh_token() {
+        return refresh_token;
+    }
+
+    public void setRefresh_token(String refresh_token) {
+        this.refresh_token = refresh_token;
+    }
+
+    public String getOpenid() {
+        return openid;
+    }
+
+    public void setOpenid(String openid) {
+        this.openid = openid;
+    }
+
+    public String getScope() {
+        return scope;
+    }
+
+    public void setScope(String scope) {
+        this.scope = scope;
+    }
+
+    public String getUnionid() {
+        return unionid;
+    }
+
+    public void setUnionid(String unionid) {
+        this.unionid = unionid;
+    }
+}

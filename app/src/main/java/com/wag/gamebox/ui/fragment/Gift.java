@@ -1,0 +1,193 @@
+package com.wag.gamebox.ui.fragment;
+
+import android.os.Message;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import com.google.gson.Gson;
+import com.wag.gamebox.R;
+import com.wag.gamebox.api.BaseUrl;
+import com.wag.gamebox.api.Constant;
+import com.wag.gamebox.api.HttpRequestUtils;
+import com.wag.gamebox.entity.HomeGiftList;
+import com.wag.gamebox.entity.MoreHotGame;
+import com.wag.gamebox.tools.RecyclerViewHelper;
+import com.wag.gamebox.tools.ToastUtil;
+import com.wag.gamebox.ui.activity.AllGiftOfGameActivity;
+import com.wag.gamebox.ui.activity.GameDeatailsActivity;
+import com.wag.gamebox.ui.activity.HotGameCenterActivity;
+import com.wag.gamebox.ui.activity.QueryActivity;
+import com.wag.gamebox.ui.adapter.HomeGiftAdapter;
+import com.wag.gamebox.ui.adapter.HotGameListAdapter;
+import com.wag.gamebox.ui.view.LoadingManger;
+import com.wag.gamebox.ui.view.SimpleFooter;
+import com.wag.gamebox.ui.view.SimpleHeader;
+import com.wag.gamebox.ui.view.SpringView;
+
+import org.xutils.http.RequestParams;
+
+import butterknife.BindView;
+import butterknife.OnClick;
+
+/**
+ * Created by LeBron on 2017/2/6.
+ */
+
+public class Gift extends BaseFragment {
+
+
+    @BindView(R.id.view_status_bar)
+    TextView viewStatusBar;
+    @BindView(R.id.title)
+    TextView title;
+    @BindView(R.id.iv_sreach)
+    ImageView ivSreach;
+    @BindView(R.id.rv_gift)
+    RecyclerView rvGift;
+    @BindView(R.id.gift_springview)
+    SpringView giftSpringview;
+    @BindView(R.id.msg)
+    TextView msg;
+    @BindView(R.id.res)
+    LinearLayout res;
+    @BindView(R.id.loading)
+    ImageView loading;
+    @BindView(R.id.layout_loading)
+    LinearLayout layoutLoading;
+    @BindView(R.id.error)
+    RelativeLayout error;
+    @BindView(R.id.sx)
+    RelativeLayout sx;
+    private HomeGiftAdapter adapter;
+    private int page=1;
+    private HomeGiftList mHomeGiftList;
+
+    @Override
+    protected int attachLayoutRes() {
+        return R.layout.fragment_gift;
+    }
+
+    @Override
+    protected void initViews() {
+        initSpringViewStyle();
+        adapter = new HomeGiftAdapter(getActivity());
+        LoadingManger insetance = LoadingManger.getInsetance();
+        insetance.setView(error);
+        LoadingManger.getInsetance().startLoading();
+    }
+
+    @Override
+    protected void initDatas() {
+//        getHotGameList();
+    }
+
+    private void initSpringViewStyle() {
+        giftSpringview.setType(SpringView.Type.FOLLOW);
+        giftSpringview.setListener(onFreshListener);
+        giftSpringview.setHeader(new SimpleHeader(getActivity()));
+        giftSpringview.setFooter(new SimpleFooter(getActivity()));
+    }
+
+    SpringView.OnFreshListener onFreshListener = new SpringView.OnFreshListener() {
+        @Override
+        public void onRefresh() {
+            getHotGameList();
+        }
+
+        @Override
+        public void onLoadmore() {
+            onLoadmoreList();
+        }
+    };
+
+    public void getHotGameList(){
+        HttpRequestUtils requestUtils=new HttpRequestUtils(mHandler);
+        requestUtils.doGet(new RequestParams(BaseUrl.getInstence().getGiftListUrl()));
+    }
+
+    private void onLoadmoreList() {
+        page=++page;
+        RequestParams params=new RequestParams(BaseUrl.getInstence().getGiftListUrl());
+        params.addParameter("page",page);
+        HttpRequestUtils requestUtils=new HttpRequestUtils(sHandler);
+        requestUtils.doGet(params);
+    }
+
+
+    private android.os.Handler mHandler=new android.os.Handler()
+    {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            giftSpringview.onFinishFreshAndLoad();
+            switch (msg.what)
+            {
+                case Constant.REQUEST_SUCCESS:
+                    Log.e("获取首页礼包数据",msg.obj.toString());
+                    try {
+                        mHomeGiftList = new Gson().fromJson(msg.obj.toString(),HomeGiftList.class);
+                        if (mHomeGiftList !=null&& mHomeGiftList.getData()!=null&& mHomeGiftList.getData().size()>0){
+                            adapter.setDatas(mHomeGiftList);
+                            RecyclerViewHelper.initRecyclerViewV(getActivity(),rvGift,false, adapter,false);
+                            adapter.setOnItemClickListener(new HomeGiftAdapter.OnItemClickListener() {
+                                @Override
+                                public void onItemLongClick(View view, int position) {
+                                    AllGiftOfGameActivity.actionStart(getActivity(),mHomeGiftList.getData().get(position).getGame_name(),mHomeGiftList.getData().get(position).getGame_id());
+                                }
+                            });
+                            Log.e("是否执行","????");
+                            LoadingManger.getInsetance().stopFinishLoading(true);
+                            error.setVisibility(View.GONE);
+                        }else{
+                            LoadingManger.getInsetance().stopFinishLoading("暂无礼包信息",false);
+                        }
+                    }catch (Exception e){
+                        e.printStackTrace();
+                        LoadingManger.getInsetance().stopFinishLoading("数据解析异常",false);
+                    }
+                    break;
+                case Constant.REQUEST_FAIL:
+                    LoadingManger.getInsetance().stopFinishLoading("网络连接异常",false);
+                    Log.e("获取首页礼包数据",msg.obj.toString());
+                    break;
+            }
+        }
+    };
+
+    private android.os.Handler sHandler=new android.os.Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            giftSpringview.onFinishFreshAndLoad();
+            switch (msg.what)
+            {
+                case Constant.REQUEST_SUCCESS:
+                    Log.e("加载首页礼包数据",msg.obj.toString());
+                    try {
+                        final HomeGiftList homeGiftList=new Gson().fromJson(msg.obj.toString(),HomeGiftList.class);
+                        if (homeGiftList!=null&&homeGiftList.getData()!=null&&homeGiftList.getData().size()>0){
+                            mHomeGiftList.getData().addAll(homeGiftList.getData());
+                            adapter.setDatas(mHomeGiftList);
+                        }
+                    }catch (Exception e){
+                        e.printStackTrace();
+                        ToastUtil.showToast("解析数据异常");
+                    }
+                    break;
+                case Constant.REQUEST_FAIL:
+                    Log.e("加载首页礼包数据",msg.obj.toString());
+                    break;
+            }
+        }
+    };
+
+    @OnClick(R.id.iv_sreach)
+    public void onViewClicked() {
+        QueryActivity.actionStart(getActivity());
+    }
+}

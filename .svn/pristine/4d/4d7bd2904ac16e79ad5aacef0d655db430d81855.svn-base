@@ -1,0 +1,253 @@
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\build\intermediates\manifests\full\release\AndroidManifest.xml:29
+-keep class android.support.v4.content.FileProvider { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\src\main\res\layout\activity_app.xml:11
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\src\main\res\layout\activity_classfication.xml:17
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\src\main\res\layout\activity_ranking.xml:17
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\src\main\res\layout\activity_service.xml:17
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\src\main\res\layout\fragment_information.xml:23
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\src\main\res\layout\layout_slideshow.xml:6
+-keep class android.support.v4.view.ViewPager { <init>(...); }
+
+# Referenced at C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\dd3bcde41d89a10b92c657aac1b131f1\res\layout\abc_alert_dialog_material.xml:41
+-keep class android.support.v4.widget.NestedScrollView { <init>(...); }
+
+# Referenced at C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\dd3bcde41d89a10b92c657aac1b131f1\res\layout\abc_select_dialog_material.xml:23
+-keep class android.support.v7.app.AlertController$RecycleListView { <init>(...); }
+
+# Referenced at C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\dd3bcde41d89a10b92c657aac1b131f1\res\layout\abc_action_menu_item_layout.xml:17
+-keep class android.support.v7.view.menu.ActionMenuItemView { <init>(...); }
+
+# Referenced at C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\dd3bcde41d89a10b92c657aac1b131f1\res\layout\abc_expanded_menu_layout.xml:17
+-keep class android.support.v7.view.menu.ExpandedMenuView { <init>(...); }
+
+# Referenced at C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\dd3bcde41d89a10b92c657aac1b131f1\res\layout\abc_list_menu_item_layout.xml:17
+# Referenced at C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\dd3bcde41d89a10b92c657aac1b131f1\res\layout\abc_popup_menu_item_layout.xml:17
+-keep class android.support.v7.view.menu.ListMenuItemView { <init>(...); }
+
+# Referenced at C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\dd3bcde41d89a10b92c657aac1b131f1\res\layout-v26\abc_screen_toolbar.xml:27
+# Referenced at C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\dd3bcde41d89a10b92c657aac1b131f1\res\layout\abc_screen_toolbar.xml:27
+-keep class android.support.v7.widget.ActionBarContainer { <init>(...); }
+
+# Referenced at C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\dd3bcde41d89a10b92c657aac1b131f1\res\layout-v26\abc_screen_toolbar.xml:44
+# Referenced at C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\dd3bcde41d89a10b92c657aac1b131f1\res\layout\abc_action_mode_bar.xml:19
+# Referenced at C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\dd3bcde41d89a10b92c657aac1b131f1\res\layout\abc_screen_toolbar.xml:43
+-keep class android.support.v7.widget.ActionBarContextView { <init>(...); }
+
+# Referenced at C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\dd3bcde41d89a10b92c657aac1b131f1\res\layout-v26\abc_screen_toolbar.xml:17
+# Referenced at C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\dd3bcde41d89a10b92c657aac1b131f1\res\layout\abc_screen_toolbar.xml:17
+-keep class android.support.v7.widget.ActionBarOverlayLayout { <init>(...); }
+
+# Referenced at C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\dd3bcde41d89a10b92c657aac1b131f1\res\layout\abc_action_menu_layout.xml:17
+-keep class android.support.v7.widget.ActionMenuView { <init>(...); }
+
+# Referenced at C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\dd3bcde41d89a10b92c657aac1b131f1\res\layout\abc_activity_chooser_view.xml:19
+-keep class android.support.v7.widget.ActivityChooserView$InnerLayout { <init>(...); }
+
+# Referenced at C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\dd3bcde41d89a10b92c657aac1b131f1\res\layout\abc_alert_dialog_material.xml:18
+-keep class android.support.v7.widget.AlertDialogLayout { <init>(...); }
+
+# Referenced at C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\dd3bcde41d89a10b92c657aac1b131f1\res\layout-watch-v20\abc_alert_dialog_button_bar_material.xml:18
+# Referenced at C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\dd3bcde41d89a10b92c657aac1b131f1\res\layout\abc_alert_dialog_button_bar_material.xml:26
+-keep class android.support.v7.widget.ButtonBarLayout { <init>(...); }
+
+# Referenced at C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\dd3bcde41d89a10b92c657aac1b131f1\res\layout\abc_screen_content_include.xml:19
+-keep class android.support.v7.widget.ContentFrameLayout { <init>(...); }
+
+# Referenced at C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\dd3bcde41d89a10b92c657aac1b131f1\res\layout-watch-v20\abc_alert_dialog_title_material.xml:44
+# Referenced at C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\dd3bcde41d89a10b92c657aac1b131f1\res\layout\abc_alert_dialog_title_material.xml:45
+-keep class android.support.v7.widget.DialogTitle { <init>(...); }
+
+# Referenced at C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\dd3bcde41d89a10b92c657aac1b131f1\res\layout\abc_screen_simple_overlay_action_mode.xml:23
+-keep class android.support.v7.widget.FitWindowsFrameLayout { <init>(...); }
+
+# Referenced at C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\dd3bcde41d89a10b92c657aac1b131f1\res\layout\abc_dialog_title_material.xml:22
+# Referenced at C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\dd3bcde41d89a10b92c657aac1b131f1\res\layout\abc_screen_simple.xml:17
+-keep class android.support.v7.widget.FitWindowsLinearLayout { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\src\main\res\layout\activity_all_gifts_of_game.xml:161
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\src\main\res\layout\activity_hot_game.xml:20
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\src\main\res\layout\activity_my_game.xml:11
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\src\main\res\layout\activity_my_gift.xml:10
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\src\main\res\layout\activity_my_ptb.xml:53
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\src\main\res\layout\activity_query.xml:63
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\src\main\res\layout\activity_query.xml:84
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\src\main\res\layout\fragment_game_type.xml:9
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\src\main\res\layout\fragment_gamedetails_gift.xml:10
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\src\main\res\layout\fragment_gift.xml:57
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\src\main\res\layout\fragment_information_info.xml:11
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\src\main\res\layout\fragment_ranking_new_and_hot.xml:213
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\src\main\res\layout\home_game_list.xml:48
+-keep class android.support.v7.widget.RecyclerView { <init>(...); }
+
+# Referenced at C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\dd3bcde41d89a10b92c657aac1b131f1\res\layout\abc_search_view.xml:75
+-keep class android.support.v7.widget.SearchView$SearchAutoComplete { <init>(...); }
+
+# Referenced at C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\dd3bcde41d89a10b92c657aac1b131f1\res\layout-v26\abc_screen_toolbar.xml:37
+# Referenced at C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\dd3bcde41d89a10b92c657aac1b131f1\res\layout\abc_screen_toolbar.xml:36
+-keep class android.support.v7.widget.Toolbar { <init>(...); }
+
+# Referenced at C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\dd3bcde41d89a10b92c657aac1b131f1\res\layout\abc_screen_simple.xml:25
+# Referenced at C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\dd3bcde41d89a10b92c657aac1b131f1\res\layout\abc_screen_simple_overlay_action_mode.xml:32
+-keep class android.support.v7.widget.ViewStubCompat { <init>(...); }
+
+# Referenced at C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\dd3bcde41d89a10b92c657aac1b131f1\res\layout-watch-v20\abc_alert_dialog_title_material.xml:53
+# Referenced at C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\dd3bcde41d89a10b92c657aac1b131f1\res\layout\abc_alert_dialog_button_bar_material.xml:43
+# Referenced at C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\dd3bcde41d89a10b92c657aac1b131f1\res\layout\abc_alert_dialog_material.xml:52
+# Referenced at C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\dd3bcde41d89a10b92c657aac1b131f1\res\layout\abc_alert_dialog_material.xml:66
+# Referenced at C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\dd3bcde41d89a10b92c657aac1b131f1\res\layout\abc_alert_dialog_title_material.xml:56
+-keep class android.widget.Space { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\build\intermediates\manifests\full\release\AndroidManifest.xml:108
+-keep class com.alipay.sdk.app.H5AuthActivity { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\build\intermediates\manifests\full\release\AndroidManifest.xml:102
+-keep class com.alipay.sdk.app.H5PayActivity { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\build\intermediates\manifests\full\release\AndroidManifest.xml:21
+-keep class com.quantark.dlgamebox.app.DLGameBoxApp { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\build\intermediates\manifests\full\release\AndroidManifest.xml:70
+-keep class com.quantark.dlgamebox.ui.activity.AboutUsActivity { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\build\intermediates\manifests\full\release\AndroidManifest.xml:57
+-keep class com.quantark.dlgamebox.ui.activity.AllGiftOfGameActivity { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\build\intermediates\manifests\full\release\AndroidManifest.xml:67
+-keep class com.quantark.dlgamebox.ui.activity.BindPhoneActivity { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\build\intermediates\manifests\full\release\AndroidManifest.xml:63
+-keep class com.quantark.dlgamebox.ui.activity.BuyPTBActivity { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\build\intermediates\manifests\full\release\AndroidManifest.xml:51
+-keep class com.quantark.dlgamebox.ui.activity.ClassiFicationActivity { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\build\intermediates\manifests\full\release\AndroidManifest.xml:69
+-keep class com.quantark.dlgamebox.ui.activity.ClipImageActivity { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\build\intermediates\manifests\full\release\AndroidManifest.xml:54
+-keep class com.quantark.dlgamebox.ui.activity.DownLoadingActivity { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\build\intermediates\manifests\full\release\AndroidManifest.xml:71
+-keep class com.quantark.dlgamebox.ui.activity.FeedBackActivity { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\build\intermediates\manifests\full\release\AndroidManifest.xml:61
+-keep class com.quantark.dlgamebox.ui.activity.ForgetPasswordActivity { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\build\intermediates\manifests\full\release\AndroidManifest.xml:48
+-keep class com.quantark.dlgamebox.ui.activity.GameDeatailsActivity { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\build\intermediates\manifests\full\release\AndroidManifest.xml:72
+-keep class com.quantark.dlgamebox.ui.activity.GameDetailsShareActivity { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\build\intermediates\manifests\full\release\AndroidManifest.xml:58
+-keep class com.quantark.dlgamebox.ui.activity.GiftDetailsActivity { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\build\intermediates\manifests\full\release\AndroidManifest.xml:55
+-keep class com.quantark.dlgamebox.ui.activity.HotGameCenterActivity { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\build\intermediates\manifests\full\release\AndroidManifest.xml:47
+-keep class com.quantark.dlgamebox.ui.activity.LoginActivity { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\build\intermediates\manifests\full\release\AndroidManifest.xml:46
+-keep class com.quantark.dlgamebox.ui.activity.MainActivity { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\build\intermediates\manifests\full\release\AndroidManifest.xml:50
+-keep class com.quantark.dlgamebox.ui.activity.MyGameActivity { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\build\intermediates\manifests\full\release\AndroidManifest.xml:65
+-keep class com.quantark.dlgamebox.ui.activity.MyGiftActivity { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\build\intermediates\manifests\full\release\AndroidManifest.xml:62
+-keep class com.quantark.dlgamebox.ui.activity.MyPTBActivity { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\build\intermediates\manifests\full\release\AndroidManifest.xml:56
+-keep class com.quantark.dlgamebox.ui.activity.QueryActivity { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\build\intermediates\manifests\full\release\AndroidManifest.xml:52
+-keep class com.quantark.dlgamebox.ui.activity.RankingActivity { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\build\intermediates\manifests\full\release\AndroidManifest.xml:60
+-keep class com.quantark.dlgamebox.ui.activity.RegisterActivity { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\build\intermediates\manifests\full\release\AndroidManifest.xml:49
+-keep class com.quantark.dlgamebox.ui.activity.ScreenshotsActivity { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\build\intermediates\manifests\full\release\AndroidManifest.xml:53
+-keep class com.quantark.dlgamebox.ui.activity.ServiceListActivity { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\build\intermediates\manifests\full\release\AndroidManifest.xml:68
+-keep class com.quantark.dlgamebox.ui.activity.ShareAppActivity { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\build\intermediates\manifests\full\release\AndroidManifest.xml:66
+-keep class com.quantark.dlgamebox.ui.activity.UpdataPasswordActivity { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\build\intermediates\manifests\full\release\AndroidManifest.xml:64
+-keep class com.quantark.dlgamebox.ui.activity.UserInfoActivity { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\build\intermediates\manifests\full\release\AndroidManifest.xml:59
+-keep class com.quantark.dlgamebox.ui.activity.WebViewActivity { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\build\intermediates\manifests\full\release\AndroidManifest.xml:39
+-keep class com.quantark.dlgamebox.ui.activity.WelComeActivity { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\src\main\res\layout\activity_query.xml:28
+-keep class com.quantark.dlgamebox.ui.view.ClearEditText { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\src\main\res\layout\activity_clip_image.xml:16
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\src\main\res\layout\activity_clip_image.xml:26
+-keep class com.quantark.dlgamebox.ui.view.ClipViewLayout { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\src\main\res\layout\fragment_ranking_new_and_hot.xml:32
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\src\main\res\layout\fragment_ranking_new_and_hot.xml:91
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\src\main\res\layout\fragment_ranking_new_and_hot.xml:152
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\src\main\res\layout\item_gift.xml:28
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\src\main\res\layout\item_hot_game.xml:27
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\src\main\res\layout\item_ranking_game.xml:36
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\src\main\res\layout\item_service.xml:27
+-keep class com.quantark.dlgamebox.ui.view.FilletImageView { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\src\main\res\layout\fragment_home.xml:29
+-keep class com.quantark.dlgamebox.ui.view.FlashView { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\src\main\res\layout\activity_game_details.xml:166
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\src\main\res\layout\activity_ranking.xml:10
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\src\main\res\layout\activity_service.xml:10
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\src\main\res\layout\fragment_information.xml:16
+-keep class com.quantark.dlgamebox.ui.view.NavitationLayout { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\src\main\res\layout\activity_classfication.xml:12
+-keep class com.quantark.dlgamebox.ui.view.NavitationScrollLayout { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\src\main\res\layout\activity_game_details.xml:171
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\src\main\res\layout\activity_main.xml:6
+-keep class com.quantark.dlgamebox.ui.view.NoScrollViewPager { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\src\main\res\layout\fragment_home.xml:15
+-keep class com.quantark.dlgamebox.ui.view.NotifyingScrollView { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\src\main\res\layout\activity_hot_game.xml:16
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\src\main\res\layout\fragment_game_type.xml:5
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\src\main\res\layout\fragment_gift.xml:53
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\src\main\res\layout\fragment_information_info.xml:7
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\src\main\res\layout\fragment_ranking_new_and_hot.xml:6
+-keep class com.quantark.dlgamebox.ui.view.SpringView { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\build\intermediates\manifests\full\release\AndroidManifest.xml:96
+-keep class com.quantark.dlgamebox.wxapi.WXEntryActivity { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\build\intermediates\manifests\full\release\AndroidManifest.xml:136
+-keep class com.sina.weibo.sdk.share.WbShareToStoryActivity { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\build\intermediates\manifests\full\release\AndroidManifest.xml:125
+-keep class com.sina.weibo.sdk.share.WbShareTransActivity { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\build\intermediates\manifests\full\release\AndroidManifest.xml:119
+-keep class com.sina.weibo.sdk.web.WeiboSdkWebActivity { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\build\intermediates\manifests\full\release\AndroidManifest.xml:88
+-keep class com.tencent.connect.common.AssistActivity { <init>(...); }
+
+# Referenced at E:\MGWorkSpace\androidworkspace\dlgamebox\app\build\intermediates\manifests\full\release\AndroidManifest.xml:75
+-keep class com.tencent.tauth.AuthActivity { <init>(...); }
+

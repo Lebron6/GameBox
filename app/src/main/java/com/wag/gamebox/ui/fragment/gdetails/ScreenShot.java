@@ -1,0 +1,88 @@
+package com.wag.gamebox.ui.fragment.gdetails;
+
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.view.View;
+import android.widget.HorizontalScrollView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.wag.gamebox.R;
+import com.wag.gamebox.api.BaseUrl;
+import com.wag.gamebox.entity.GameDetails;
+import com.wag.gamebox.tools.Utils;
+import com.wag.gamebox.ui.activity.ScreenshotsActivity;
+import com.wag.gamebox.ui.fragment.BaseFragment;
+import com.wag.gamebox.ui.view.FilletImageView;
+
+import org.xutils.x;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
+
+/**
+ * Created by James on 2018/9/29.
+ */
+@SuppressLint("ValidFragment")
+public class ScreenShot extends BaseFragment {
+    
+    @BindView(R.id.gameInfo_ImagesLayout)
+    LinearLayout gameInfoImagesLayout;
+    @BindView(R.id.gameInfo_HorizontalScrollView)
+    HorizontalScrollView gameInfoHorizontalScrollView;
+    @BindView(R.id.tv_introduce)
+    TextView tvIntroduce;
+    private GameDetails.DataBean.GameDetailsBean game_details;
+
+    public ScreenShot(GameDetails.DataBean.GameDetailsBean game_details) {
+        this.game_details=game_details;
+    }
+    public ScreenShot() {
+    }
+    @Override
+    protected int attachLayoutRes() {
+        return R.layout.fragment_gamedetails_ss;
+    }
+
+    @Override
+    protected void initViews() {
+        for (int i = 0; i < game_details.getFeature_img().size(); i++) {
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(-0x1, -0x1);
+            FilletImageView img = new FilletImageView(x.app());
+            params.height = Utils.dipToPx(getActivity(), 220.0f);
+            params.width = Utils.dipToPx(getActivity(), 140.0f);
+            if (i != 0) {
+                params.leftMargin = Utils.dipToPx(getActivity(), 8.0f);
+            }
+            img.setLayoutParams(params);
+            img.setTag(Integer.valueOf(i));
+            img.setScaleType(ImageView.ScaleType.FIT_XY);
+            final String imgs = game_details.getFeature_img().get(i).getUrl();
+            x.image().bind(img, BaseUrl.getInstence().ipAddress+imgs);
+            gameInfoImagesLayout.addView(img);
+            img.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ScreenshotsActivity.actionStart(getActivity(),game_details);
+                }
+            });
+        }
+        tvIntroduce.setText(game_details.getGame_details());
+    }
+//    private List<String> getImgUrl(){
+//
+//        List<String> imgs = new ArrayList<>();
+//        imgs.add("http://cdn.wuming.com/imgupload/2018/05/09/32c738bcd804fb4b8492b2af383e13d0.jpg");
+//        imgs.add("http://cdn.wuming.com/imgupload/2018/05/09/4c5f884c6ad866078c30041c05231271.jpg");
+//        imgs.add("http://cdn.wuming.com/imgupload/2018/05/09/e7b08ec73bba8ab6282900ea8c218065.jpg");
+//        return imgs;
+//    }
+
+    @Override
+    protected void initDatas() {
+
+    }
+}

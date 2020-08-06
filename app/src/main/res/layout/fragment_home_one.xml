@@ -1,0 +1,53 @@
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/themeWhite"
+    android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/title_view"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include layout="@layout/home_search_bar" />
+    </LinearLayout>
+    <com.wag.gamebox.ui.view.NotifyingScrollView
+        android:layout_below="@+id/title_view"
+        android:id="@+id/scrollView_home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@null"
+        android:scrollbars="none"
+        android:overScrollMode="never"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.wag.gamebox.ui.view.FlashView
+                android:id="@+id/flash_view"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                />
+
+            <include layout="@layout/home_center_bar"
+                android:visibility="gone" />
+
+            <include layout="@layout/home_game_list" />
+        </LinearLayout>
+
+    </com.wag.gamebox.ui.view.NotifyingScrollView>
+
+
+
+</RelativeLayout> </LinearLayout>

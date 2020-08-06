@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+android:orientation="vertical"
+    android:layout_height="match_parent">
+<include layout="@layout/top_bar"/>
+    <TextView
+        android:textSize="16sp"
+        android:textColor="@color/colorTextBlack"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:text="数量"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:id="@+id/rg_num"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="120dp">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <LinearLayout
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+            <CheckBox
+                android:id="@+id/rb_one"
+                android:checked="true"
+                android:textSize="12sp"
+                android:background="@drawable/radio_ptb_num_selector"
+                android:button="@null"
+                android:text="10"
+                android:textColor="@drawable/text_color_selector_r"
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="40dp" />
+            <CheckBox
+                android:id="@+id/rb_two"
+                   android:textSize="12sp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/radio_ptb_num_selector"
+                android:button="@null"
+                android:text="50"
+                android:textColor="@drawable/text_color_selector_r"
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="40dp" />
+            <CheckBox
+                android:id="@+id/rb_three"
+                   android:textSize="12sp"
+                android:background="@drawable/radio_ptb_num_selector"
+                android:button="@null"
+                android:text="100"
+                android:textColor="@drawable/text_color_selector_r"
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="40dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"><CheckBox
+            android:id="@+id/rb_four"
+
+            android:background="@drawable/radio_ptb_num_selector"
+            android:button="@null"
+            android:text="300"
+            android:textColor="@drawable/text_color_selector_r"
+            android:gravity="center"
+            android:layout_width="0dp"   android:textSize="12sp"
+            android:layout_weight="1"
+            android:layout_height="40dp" /><CheckBox
+            android:id="@+id/rb_five"
+
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            style="@style/ByPTBEditText"
+            android:background="@drawable/radio_ptb_num_selector"
+            android:button="@null"
+            android:text="500"
+            android:textSize="12sp"
+            android:textColor="@drawable/text_color_selector_r"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="40dp" />
+        <EditText
+            android:id="@+id/et_input_num"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:hint="其它金额"
+            android:background="@drawable/radio_bg_ptb_num_nol"
+            style="@style/ByPTBEditText"
+            android:numeric="integer"
+            android:textColor="@color/themeGrayText"
+            android:layout_weight="1"
+            android:layout_height="40dp" />
+        </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+   <RelativeLayout
+       android:orientation="horizontal"
+       android:layout_width="match_parent"
+       android:layout_height="40dp">
+       <TextView
+           android:id="@+id/tv_v_n"
+           android:layout_marginLeft="15dp"
+           android:layout_alignParentLeft="true"
+           android:layout_marginRight="5dp"
+           android:layout_centerVertical="true"
+           android:textColor="@color/colorTextBlack"
+           android:textSize="14sp"
+           android:text="VIP等级:"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content" />
+       <TextView
+           android:id="@+id/tv_vip_level"
+           android:layout_toRightOf="@id/tv_v_n"
+           android:layout_centerVertical="true"
+           android:textColor="@color/themeYellow"
+           android:textSize="16sp"
+           android:layout_marginRight="5dp"
+           android:text="10"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content" />
+       <TextView
+           android:id="@+id/txt_y"
+           android:layout_centerVertical="true"
+           android:layout_toLeftOf="@+id/txt_discount"
+           android:textColor="@color/colorTextBlack"
+           android:textSize="14sp"
+           android:layout_marginRight="10dp"
+           android:text="元"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content" />
+       <TextView
+           android:id="@+id/tv_ptb_num"
+           android:layout_toLeftOf="@+id/txt_y"
+           android:layout_centerVertical="true"
+           android:textColor="@color/themeYellow"
+           android:textSize="16sp"
+           android:layout_marginRight="10dp"
+           android:text="10"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content" />
+       <TextView
+           android:id="@+id/txt_pay"
+           android:layout_marginRight="10dp"
+           android:layout_toLeftOf="@+id/tv_ptb_num"
+           android:layout_centerVertical="true"
+           android:textColor="@color/colorTextBlack"
+           android:textSize="14sp"
+           android:text="支付金额："
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content" />
+       <TextView
+           android:id="@+id/txt_discount"
+           android:layout_centerVertical="true"
+           android:textColor="@color/colorTextBlack"
+           android:textSize="14sp"
+           android:layout_marginRight="15dp"
+           android:layout_alignParentRight="true"
+           android:text="(4折)"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content" />
+   </RelativeLayout>
+    <View
+        android:background="@color/colorBgGray"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+    <TextView
+        android:textSize="16sp"
+        android:textColor="@color/colorTextBlack"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:text="选择支付方式"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <RelativeLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        <ImageView
+            android:id="@+id/img_alipay"
+            android:layout_marginLeft="20dp"
+            android:background="@mipmap/icon_alipay"
+            android:layout_width="wrap_content"  android:layout_centerVertical="true"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:textSize="16sp"
+            android:layout_toRightOf="@+id/img_alipay"
+            android:textColor="@color/colorTextBlack"
+            android:layout_marginLeft="10dp"
+            android:text="支付宝支付"  android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <CheckBox
+            android:id="@+id/cb_alipay"
+            android:layout_marginRight="10dp"
+            android:checked="true"
+            style="@style/PTBPayTypeCheckboxTheme"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        <ImageView
+            android:id="@+id/img_wechat_pay"
+            android:layout_marginLeft="20dp"
+            android:background="@mipmap/icon_wechatpay"
+            android:layout_width="wrap_content"  android:layout_centerVertical="true"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:textSize="16sp"
+            android:layout_toRightOf="@+id/img_wechat_pay"
+            android:textColor="@color/colorTextBlack"
+            android:layout_marginLeft="10dp"
+            android:text="微信支付"  android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <CheckBox
+            android:id="@+id/cb_wechat_pay"
+            android:layout_marginRight="10dp"
+            style="@style/PTBPayTypeCheckboxTheme"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_below="@+id/layout_password"
+        android:id="@+id/tv_buy_ptb"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="40.0dip"
+        android:layout_centerInParent="true"
+        android:textColor="@drawable/text_color_selector_m"
+        android:background="@drawable/text_bg_selector_m"
+        android:gravity="center"
+        android:text="立即充值"
+        android:textSize="14sp"
+        ></TextView>
+</LinearLayout>

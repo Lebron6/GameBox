@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/relativeLayout_to_hot"
+        android:background="@drawable/ll_home_four_bg_selector"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+
+
+        <TextView
+            android:id="@+id/tv_vip"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="送VIP"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/themeYellow"
+            android:textSize="15dp"
+            android:layout_centerVertical="true" />
+
+        <TextView
+            android:id="@+id/tv_hot"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            android:textColor="@color/colorTextBlack"
+            android:textSize="15dp"
+            android:text="热门游戏"
+            android:layout_centerVertical="true" />
+        <TextView
+            android:id="@+id/tv_xx"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            android:gravity="center"
+            android:textColor="@color/colorTextBlack"
+            android:textSize="15dp"
+            android:text="休闲"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true" />
+        <TextView
+            android:id="@+id/tv_other"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            android:gravity="center"
+            android:textColor="@color/colorTextBlack"
+            android:textSize="15dp"
+            android:text="更多"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true" />
+    </LinearLayout>
+ <!--   <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/themeGrayLine"/>-->
+    <android.support.v7.widget.RecyclerView
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:id="@+id/rv_hot"
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

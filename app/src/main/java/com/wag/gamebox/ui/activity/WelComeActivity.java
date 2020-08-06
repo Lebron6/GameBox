@@ -1,0 +1,148 @@
+package com.wag.gamebox.ui.activity;
+
+import android.Manifest;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
+import android.provider.Settings;
+import android.support.annotation.RequiresApi;
+import android.view.View;
+
+import com.gyf.barlibrary.ImmersionBar;
+import com.wag.gamebox.R;
+import com.wag.gamebox.tools.ToastUtil;
+import com.wag.gamebox.ui.dialog.InstallAppDialog;
+import com.zhy.m.permission.MPermissions;
+import com.zhy.m.permission.PermissionDenied;
+import com.zhy.m.permission.PermissionGrant;
+
+import java.util.Timer;
+import java.util.TimerTask;
+
+/**
+ * 闪屏页
+ */
+public class WelComeActivity extends BaseActivity {
+
+    private static final int REQUECT_CODE_SDCARD = 1;
+    private static final int INSTALL_PERMISS_CODE = 2;
+    private ImmersionBar mImmersionBar;
+    private InstallAppDialog installAppDialog;
+
+    @Override
+    protected void initTitle() {
+
+    }
+
+    @Override
+    protected int attachLayoutRes() {
+        return R.layout.activity_wecome;
+    }
+
+    @Override
+    protected void initViews() {
+        mImmersionBar = ImmersionBar.with(WelComeActivity.this);
+        mImmersionBar.statusBarDarkFont(true, 0.2f)
+                .init();
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                MPermissions.requestPermissions(WelComeActivity.this, REQUECT_CODE_SDCARD, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_PHONE_STATE, Manifest.permission.CAMERA});
+            }
+        };
+        timer.schedule(task, 1000 * 3);
+    }
+
+    @Override
+    protected void initDatas() {
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mImmersionBar != null)
+            mImmersionBar.destroy();  //在BaseActivity里销毁
+    }
+
+
+    /**
+     * 8.0以上系统设置安装未知来源权限
+     */
+    public void setInstallPermission() {
+        boolean haveInstallPermission;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            //先判断是否有安装未知来源应用的权限
+            haveInstallPermission = getPackageManager().canRequestPackageInstalls();
+            if (!haveInstallPermission) {
+                installAppDialog = new InstallAppDialog(WelComeActivity.this, R.style.MyDialog, onClickListener);
+                installAppDialog.show();
+                return;
+            }else{
+                MainActivity.actionStart(this);
+                finish();
+            }
+        } else {
+            MainActivity.actionStart(this);
+            finish();
+        }
+    }
+
+    View.OnClickListener onClickListener = new View.OnClickListener() {
+        @RequiresApi(api = Build.VERSION_CODES.O)
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.tv_close:
+                    toInstallPermissionSettingIntent();
+                    break;
+            }
+        }
+    };
+
+    /**
+     * 开启安装未知来源权限
+     */
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void toInstallPermissionSettingIntent() {
+        Uri packageURI = Uri.parse("package:" + getPackageName());
+        Intent intent = new Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES, packageURI);
+        startActivityForResult(intent, INSTALL_PERMISS_CODE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK && requestCode == INSTALL_PERMISS_CODE) {
+            ToastUtil.showToast("已授予APP安装未知应用权限");
+            if (installAppDialog != null) {
+                installAppDialog.dismiss();
+            }
+            MainActivity.actionStart(this);
+            finish();
+        } else {
+            ToastUtil.showToast("请授予APP安装未知应用权限");
+            finish();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        MPermissions.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    @PermissionGrant(REQUECT_CODE_SDCARD)
+    public void requestSdcardSuccess() {
+        setInstallPermission();
+    }
+
+    @PermissionDenied(REQUECT_CODE_SDCARD)
+    public void requestSdcardFailed() {
+        ToastUtil.showToast("请设置App运行所需权限!");
+        finish();
+    }
+
+}

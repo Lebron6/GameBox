@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/themeWhite"
+    android:layout_height="wrap_content">
+<LinearLayout
+    android:paddingTop="5dp"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_user_icon"
+            android:layout_width="37dp"
+            android:layout_height="37dp" />
+        <RelativeLayout
+            android:gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_user_name"
+                android:text="毛不易"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorTextBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_comment_time"
+                android:layout_width="12dp"
+                android:layout_height="10dp"
+                android:text="2019.5.14 8:30"
+                android:textColor="@color/themeGrayText"
+                android:textSize="12sp"
+                android:visibility="gone" />
+        </RelativeLayout>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tv_comment"
+        android:text="蔡徐坤教你打篮球蔡徐坤教你打篮球蔡徐坤教你打篮球蔡徐坤教你打篮球蔡徐坤教你打篮球蔡徐坤教你打篮球蔡徐坤教你打篮球蔡徐坤教你打篮球蔡徐坤教蔡徐坤篮球蔡..."
+        android:textSize="15sp"
+        android:textColor="@color/colorTextBlack"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="47dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <LinearLayout
+        android:id="@+id/layout_callback"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="47dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+  <LinearLayout
+      android:id="@+id/layout_all_callback"
+      android:orientation="horizontal"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+      <TextView
+          android:text="查看全部 "
+          android:textSize="12sp"
+          android:textColor="@color/themeYellow"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content" />
+
+      <TextView
+          android:id="@+id/tv_callback_num"
+          android:text="50"  android:textSize="12sp"
+          android:textColor="@color/themeYellow"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content" />
+
+      <TextView
+          android:text=" 条回复"  android:textSize="12sp"
+          android:textColor="@color/themeYellow"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content" />
+  </LinearLayout>
+        <RelativeLayout
+            android:id="@+id/layout_game"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:background="@color/colorBgGray"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="70dp">
+
+            <TextView
+                android:layout_centerVertical="true"
+                android:id="@+id/tv_game_name"
+                android:text="毛不易"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/colorTextBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:layout_marginRight="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="100dp"
+                android:id="@+id/iv_game_icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+
+</LinearLayout>
+</LinearLayout>

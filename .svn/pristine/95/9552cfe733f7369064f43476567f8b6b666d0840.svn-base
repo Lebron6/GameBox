@@ -1,0 +1,8 @@
+package com.quantark.dlgamebox.callback;
+
+public interface OnGiftGetSucCallBack {
+    /**
+     * Adapter领取礼包成功回调
+     */
+    void onGiftGetSucCallBack();
+}

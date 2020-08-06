@@ -1,0 +1,47 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBgGray"
+    android:orientation="vertical"
+    >
+
+   <include layout="@layout/top_bar"/>
+
+   <LinearLayout  android:background="@color/themeWhite"
+       android:paddingLeft="15dp"
+       android:paddingRight="15dp"
+       android:gravity="center_vertical"
+       android:orientation="horizontal"
+       android:layout_width="match_parent"
+       android:layout_height="50dp">
+
+      <EditText
+          android:id="@+id/et_re_new_nickname"
+          android:layout_marginLeft="20dp"
+          android:background="@null"
+          android:textColor="@color/colorTextBlack"
+          android:hint="请输入昵称"
+          android:textSize="12sp"
+          android:layout_width="match_parent"
+          android:layout_height="30dp" />
+   </LinearLayout>
+   <View
+       android:background="@color/colorBgGray"
+       android:layout_width="match_parent"
+       android:layout_height="0.5dp"/>
+   <TextView
+       android:layout_marginTop="20dp"
+       android:layout_marginLeft="50dp"
+       android:layout_marginRight="50dp"
+       android:id="@+id/tv_commit"
+       android:textStyle="bold"
+       android:layout_width="match_parent"
+       android:layout_height="40.0dip"
+       android:layout_centerInParent="true"
+       android:textColor="@drawable/text_color_selector_m"
+       android:background="@drawable/text_bg_selector_m"
+       android:gravity="center"
+       android:text="保存"
+       android:textSize="14sp"
+       ></TextView>
+</LinearLayout>

@@ -1,0 +1,114 @@
+package com.wag.gamebox.ui.activity;
+
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
+import android.util.Log;
+import android.widget.TextView;
+
+import com.google.gson.Gson;
+import com.wag.gamebox.R;
+import com.wag.gamebox.api.BaseUrl;
+import com.wag.gamebox.api.Constant;
+import com.wag.gamebox.api.HttpRequestUtils;
+import com.wag.gamebox.entity.GameTypeBean;
+import com.wag.gamebox.tools.ToastUtil;
+import com.wag.gamebox.ui.adapter.NavPagerAdapter;
+import com.wag.gamebox.ui.fragment.classfication.GameType;
+import com.wag.gamebox.ui.view.NavitationScrollLayout;
+import com.wag.gamebox.ui.view.TitleBarManger;
+
+import org.xutils.http.RequestParams;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
+
+public class ClassiFicationActivity extends BaseActivity {
+
+
+    @BindView(R.id.view_status_bar)
+    TextView viewStatusBar;
+    @BindView(R.id.nav_class)
+    NavitationScrollLayout navClass;
+    @BindView(R.id.vp_class)
+    ViewPager vpClass;
+    private String[] titles;
+
+
+    public static void actionStart(Context context) {
+        Intent intent = new Intent(context, ClassiFicationActivity.class);
+        context.startActivity(intent);
+    }
+
+    @Override
+    protected void initTitle() {
+        TitleBarManger manger = TitleBarManger.getInsetance();
+        manger.setContext(this);
+        manger.setTitle("分类");
+        manger.setBack();
+        manger.setSearch();
+    }
+
+    @Override
+    protected int attachLayoutRes() {
+        return R.layout.activity_classfication;
+    }
+
+    @Override
+    protected void initViews() {
+    }
+
+    @Override
+    protected void initDatas() {
+        RequestParams params = new RequestParams(BaseUrl.getInstence().getGameTypeUrl());
+        HttpRequestUtils requestUtils = new HttpRequestUtils(mHandler);
+        requestUtils.doGet(params);
+    }
+
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case Constant.REQUEST_SUCCESS:
+                    Log.e("获取游戏分类结果", msg.obj.toString());
+                    try {
+                        final GameTypeBean gameTypeBean = new Gson().fromJson(msg.obj.toString(), GameTypeBean.class);
+                        if (gameTypeBean.getCode().equals("200")) {
+                            if (gameTypeBean.getData() != null && gameTypeBean.getData().size() > 0) {
+                                List<Fragment> fragments = new ArrayList<>();
+                                titles = new String[gameTypeBean.getData().size()];
+                                for (int i = 0; i < gameTypeBean.getData().size(); i++) {
+                                    titles[i] = gameTypeBean.getData().get(i).getType_name();
+                                    fragments.add(new GameType(gameTypeBean.getData().get(i).getId()));
+                                }
+                                NavPagerAdapter viewPagerAdapter = new NavPagerAdapter(getSupportFragmentManager());
+                                viewPagerAdapter.setData(fragments);
+                                vpClass.setAdapter(viewPagerAdapter);
+                                navClass.setViewPager(ClassiFicationActivity.this, titles, vpClass, R.color.colorTextBlack, R.color.themeYellow, 15, 17, 40, true, R.color.themeYellow, 0f, 15f, 15f, 100);
+//        navitationScrollLayout.setBgLine(this, 1, R.color.themecolor);
+                                navClass.setNavLine(ClassiFicationActivity.this, 3, R.color.themeYellow);
+                            }
+
+                        } else {
+                            ToastUtil.showToast(gameTypeBean.getMsg());
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        Log.e("解析异常",e.toString());
+                        ToastUtil.showToast("暂无分类信息");
+                    }
+                    break;
+                case Constant.REQUEST_FAIL:
+                    Log.e("获取游戏分类结果", msg.obj.toString());
+                    ToastUtil.showToast("网络异常");
+                    break;
+            }
+        }
+    };
+}

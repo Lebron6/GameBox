@@ -1,0 +1,188 @@
+package com.wag.gamebox.ui.activity;
+
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Message;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import com.google.gson.Gson;
+import com.wag.gamebox.R;
+import com.wag.gamebox.api.BaseUrl;
+import com.wag.gamebox.api.Constant;
+import com.wag.gamebox.api.HttpRequestUtils;
+import com.wag.gamebox.callback.OnGiftGetSucCallBack;
+import com.wag.gamebox.entity.AllGiftsOfGame;
+import com.wag.gamebox.entity.GameDetails;
+import com.wag.gamebox.entity.GameInfo;
+import com.wag.gamebox.tools.DownLoadManger;
+import com.wag.gamebox.tools.PreferenceUtils;
+import com.wag.gamebox.tools.RecyclerViewHelper;
+import com.wag.gamebox.ui.adapter.AllGiftOfGameAdapter;
+import com.wag.gamebox.ui.adapter.GameGiftDetailsListAdapter;
+import com.wag.gamebox.ui.view.LoadingManger;
+import com.wag.gamebox.ui.view.TitleBarManger;
+
+import org.xutils.ex.DbException;
+import org.xutils.http.RequestParams;
+import org.xutils.x;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
+/**
+ * Created by James on 2018/10/8.
+ */
+public class AllGiftOfGameActivity extends BaseActivity implements OnGiftGetSucCallBack{
+    @BindView(R.id.view_status_bar)
+    TextView viewStatusBar;
+    @BindView(R.id.iv_back)
+    ImageView ivBack;
+    @BindView(R.id.iv_share)
+    ImageView ivShare;
+    @BindView(R.id.layout_top)
+    RelativeLayout layoutTop;
+    @BindView(R.id.res)
+    LinearLayout res;
+    @BindView(R.id.loading)
+    ImageView loading;
+    @BindView(R.id.layout_loading)
+    LinearLayout layoutLoading;
+    @BindView(R.id.error)
+    RelativeLayout error;
+    @BindView(R.id.layout_error)
+    LinearLayout layoutError;
+    @BindView(R.id.iv_game_icon)
+    ImageView ivGameIcon;
+    @BindView(R.id.relativeLayout)
+    RelativeLayout relativeLayout;
+    @BindView(R.id.tv_game_name)
+    TextView tvGameName;
+    @BindView(R.id.tv_game_type)
+    TextView tvGameType;
+    @BindView(R.id.tv_game_size)
+    TextView tvGameSize;
+    @BindView(R.id.tv_nomal_v)
+    TextView tvNomalV;
+    @BindView(R.id.tv_game_version)
+    TextView tvGameVersion;
+    @BindView(R.id.zhishu)
+    RelativeLayout zhishu;
+    @BindView(R.id.linearLayout)
+    LinearLayout linearLayout;
+    @BindView(R.id.parent_layout)
+    LinearLayout parentLayout;
+    @BindView(R.id.home_game_line_one)
+    View homeGameLineOne;
+    @BindView(R.id.rv_gifts)
+    RecyclerView rvGifts;
+    @BindView(R.id.main_view)
+    RelativeLayout mainView;
+
+    public static final String GAME_ID = "game_id";
+    public static final String TITLE = "title";
+    private AllGiftOfGameAdapter adapter;
+    private AllGiftsOfGame allGiftsOfGame;
+
+    public static void actionStart(Context context, String title, int gameId) {
+        Intent intent = new Intent(context, AllGiftOfGameActivity.class);
+        intent.putExtra(TITLE, title);
+        intent.putExtra(GAME_ID, gameId);
+        context.startActivity(intent);
+    }
+
+    @Override
+    protected void initTitle() {
+        TitleBarManger manger=TitleBarManger.getInsetance();
+        manger.setContext(this);
+        manger.setTitle(getIntent().getStringExtra(TITLE));
+        manger.setBack();
+    }
+
+    @Override
+    protected int attachLayoutRes() {
+        return R.layout.activity_all_gifts_of_game;
+    }
+
+    @Override
+    protected void initViews() {
+        adapter = new AllGiftOfGameAdapter(this);
+        adapter.setGetGiftSucCallBack(this);
+    }
+
+    AllGiftOfGameAdapter.OnItemClickListener onItemClickListener=new AllGiftOfGameAdapter.OnItemClickListener() {
+        @Override
+        public void onItemLongClick(View view, int position) {
+            Log.e("传过去的Id",allGiftsOfGame.getData().getKac_list().get(position).getId()+"");
+            GiftDetailsActivity.actionStart(AllGiftOfGameActivity.this,allGiftsOfGame.getData().getKac_list().get(position).getName(),allGiftsOfGame.getData().getKac_list().get(position).getId());
+        }
+    };
+
+    @Override
+    protected void initDatas() {
+        LoadingManger loadingManger = LoadingManger.getInsetance();
+        loadingManger.setView(error);
+        getAllGiftByGame();
+
+    }
+
+    private void getAllGiftByGame() {
+        RequestParams params=new RequestParams(BaseUrl.getInstence().getAllGiftsOfGameUrl());
+        params.addParameter("id",getIntent().getIntExtra(GAME_ID,-1));
+        params.addHeader("token",PreferenceUtils.getInstance().getUserToken());
+        HttpRequestUtils requestUtils=new HttpRequestUtils(mHandler);
+        requestUtils.doGet(params);
+    }
+
+    private android.os.Handler mHandler=new android.os.Handler()
+    {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what)
+            {
+                case Constant.REQUEST_SUCCESS:
+                    Log.e("获取游戏所有礼包数据",msg.obj.toString());
+                    try {
+                        allGiftsOfGame = new Gson().fromJson(msg.obj.toString(),AllGiftsOfGame.class);
+                        if (allGiftsOfGame !=null&& allGiftsOfGame.getData()!=null){
+                            if (allGiftsOfGame.getData().getGame_info()!=null){
+                                x.image().bind(ivGameIcon, BaseUrl.getInstence().ipAddress+allGiftsOfGame.getData().getGame_info().getLogo_img());
+                                tvGameName.setText(allGiftsOfGame.getData().getGame_info().getGame_name());
+                                tvGameSize.setText(allGiftsOfGame.getData().getGame_info().getGame_size());
+                                tvGameType.setText(allGiftsOfGame.getData().getGame_info().getType_name());
+                                tvGameVersion.setText(allGiftsOfGame.getData().getGame_info().getKac_count()+"");
+//                                tvGameVersion.setText(gameDetails.getData().getGame_info().getDown_count()); //修改为游戏版本
+                            }
+                            if (allGiftsOfGame.getData().getKac_list()!=null&& allGiftsOfGame.getData().getKac_list().size()>0){
+                                adapter.setDatas(allGiftsOfGame);
+                                adapter.setOnItemClickListener(onItemClickListener);
+                                RecyclerViewHelper.initRecyclerViewV(AllGiftOfGameActivity.this, rvGifts, true, adapter,true);
+                            }
+                            LoadingManger.getInsetance().stopFinishLoading(true);
+                        }
+                    }catch (Exception e){
+                        e.printStackTrace();
+                        LoadingManger.getInsetance().stopFinishLoading("数据解析异常",false);
+                    }
+                    break;
+                case Constant.REQUEST_FAIL:
+                    LoadingManger.getInsetance().stopFinishLoading("网络连接异常",false);
+                    Log.e("获取游戏所有礼包数据",msg.obj.toString());
+                    break;
+            }
+        }
+    };
+
+    @Override
+    public void onGiftGetSucCallBack() {
+        getAllGiftByGame();
+    }
+}

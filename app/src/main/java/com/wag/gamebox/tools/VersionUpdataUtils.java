@@ -1,0 +1,228 @@
+package com.wag.gamebox.tools;
+
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
+import android.support.v4.content.FileProvider;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+
+import com.wag.gamebox.BuildConfig;
+import com.wag.gamebox.R;
+import com.wag.gamebox.app.WagGameBoxApp;
+import com.wag.gamebox.ui.dialog.VersionUpdateDialog;
+import org.xutils.common.Callback;
+import org.xutils.common.task.PriorityExecutor;
+import org.xutils.http.RequestParams;
+import org.xutils.x;
+import java.io.File;
+import java.text.DecimalFormat;
+import java.util.concurrent.Executor;
+
+public class VersionUpdataUtils {
+
+    /**
+     * @param ver
+     * @param url
+     * @param act
+     * @return
+     */
+
+    public static int versionUpdate(String ver, String url, Activity act) {
+        try {
+            WagGameBoxApp app = (WagGameBoxApp) WagGameBoxApp
+                    .getApplication();
+            int localverison = app.getPackageManager().getPackageInfo(
+                    app.getPackageName(), 0).versionCode;
+            Log.e("本地版本号：", "" + localverison);
+            if (ver.equals("null") || ver.equals("")) {
+                ver = "" + localverison;
+            }
+            float serververison = Float.parseFloat(ver);// null不能转化为flat
+            if (serververison > localverison) {
+                return 1;
+            } else if (serververison == localverison) {
+                return 2;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 3;
+        }
+        return 4;
+    }
+
+
+    private static VersionUpdateDialog versionUpdateDialog;
+    private static TextView size;
+    private static TextView title;
+    private static TextView spend;
+    private static ProgressBar progressBar;
+    private static TextView message;
+    private static Button dialog_button_cancel;
+    private static Button dialog_button_ok;
+    private static View pro;
+    private final static Executor exec = new PriorityExecutor(3, true);//成员常量
+
+    public static void update(final String url, final Activity a, final int b) {
+        versionUpdateDialog = new VersionUpdateDialog(a, R.style.MyDialog);
+        View view = versionUpdateDialog.getView();
+        size = (TextView) view.findViewById(R.id.size);
+        message = (TextView) view.findViewById(R.id.message);
+        title = (TextView) view.findViewById(R.id.title);
+        spend = (TextView) view.findViewById(R.id.spend);
+        dialog_button_cancel = (Button) view.findViewById(R.id.dialog_button_cancel);
+        dialog_button_ok = (Button) view.findViewById(R.id.dialog_button_ok);
+        progressBar = (ProgressBar) view.findViewById(R.id.progressBar);
+        pro = view.findViewById(R.id.pro);
+        title.setText("版本更新");
+        if (b == 1) {
+            message.setText("发现新版本，是否进行更新？");
+            dialog_button_ok.setText("更新");
+        } else {
+            message.setText("恭喜您！程序已是最新版本，无需更新~");
+            dialog_button_ok.setText("确定");
+        }
+        dialog_button_ok.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                if (b == 1) {
+                    message.setVisibility(View.INVISIBLE);
+                    pro.setVisibility(View.VISIBLE);
+                    dialog_button_ok.setVisibility(View.GONE);
+                    StartDown(url);
+                } else {
+                    versionUpdateDialog.dismiss();
+                }
+            }
+        });
+
+        versionUpdateDialog.show();
+        dialog_button_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                versionUpdateDialog.dismiss();
+            }
+        });
+
+    }
+
+    public static File getApkFile(String packageName) {
+        String dir = FileUtil.getDownloadDir().getAbsolutePath();
+        return new File(dir, packageName + ".apk");
+    }
+    //下载
+    protected  static void StartDown(String url) {
+        RequestParams entity = new RequestParams(url);
+        entity.setAutoResume(true);//是否断点下载
+        entity.setAutoRename(false);//下载完成后是否自动重命名
+        entity.setCancelFast(true);//快速取消
+        entity.setExecutor(exec);//线程池
+        entity.setSaveFilePath(getApkFile("dlgamebox").getAbsolutePath());//文件保存路径
+        Callback.Cancelable cancelable = x.http().get(entity, new Callback.ProgressCallback<File>() {
+
+            @Override
+            public void onCancelled(Callback.CancelledException arg0) {
+                Log.e("onCancelled","onCancelled");
+            }
+
+            @Override
+            public void onError(Throwable arg0, boolean arg1) {
+                Log.e("onError",arg0.toString());
+            }
+
+            @Override
+            public void onFinished() {
+                Log.e("onFinished","onFinished");
+            }
+
+            @Override
+            public void onSuccess(File arg0) {
+                versionUpdateDialog.dismiss();
+                File apkFile = getApkFile(String.valueOf("dlgamebox"));
+               installApp(getContext(), apkFile);
+            }
+
+            @Override
+            public void onLoading(long arg0, long arg1, boolean arg2) {
+                int progress = (int) (arg1 * 100f / arg0 + 0.5f);
+                DecimalFormat df2 = new DecimalFormat("##.0");
+                String format = df2.format(arg0 / 1024 / 1024);
+                String format1 = df2.format(arg1 / 1024 / 1024);
+                size.setText(format + "M" + "/" + format1 + "M");
+                spend.setText(getSpent(arg1));
+                progressBar.setProgress(progress);
+            }
+
+            @Override
+            public void onStarted() {
+                size.setText("0M/0M");
+                spend.setText("0kb/m");
+                progressBar.setProgress(0);
+            }
+
+            @Override
+            public void onWaiting() {
+                Log.e("onWaiting","onWaiting");
+            }
+        });
+    }
+    private static double b = 0;
+    private static double c;
+    private static double d;
+    private static double l;
+    /**
+     * 下载速度
+     *
+     * @param a
+     * @return
+     */
+    public static String getSpent(double a) {
+        DecimalFormat df = new DecimalFormat("######0.00");
+        c = a - b;
+        d = c / 1024;
+
+        b = a;
+        if (d > 1024) {
+            double v = d / 1024;
+            String format = df.format(v);
+            return format + "MB/s";
+        }
+        String format = df.format(d);
+        return format + "KB/s";
+    }
+    /**
+     * 获取文章上下文
+     *
+     * @return
+     */
+    public static Context getContext() {
+        return WagGameBoxApp.getApplication();
+    }
+
+    /**
+     * 安装应用程序
+     *
+     * @param context
+     * @param apkFile
+     */
+    public static   void installApp(Context context, File apkFile) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+//判断是否是AndroidN以及更高的版本
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            Uri contentUri = FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID + ".fileProvider", apkFile);
+            intent.setDataAndType(contentUri, "application/vnd.android.package-archive");
+        } else {
+            intent.setDataAndType(Uri.fromFile(apkFile), "application/vnd.android.package-archive");
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        }
+        context.startActivity(intent);
+    }
+
+}

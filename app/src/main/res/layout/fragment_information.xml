@@ -1,0 +1,30 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:visibility="visible"
+        android:background="@drawable/theme_bg_yellow"
+        android:id="@+id/view_status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_margin_top"
+        />
+<RelativeLayout
+    android:background="@drawable/theme_bg_yellow"
+    android:layout_width="match_parent"
+    android:layout_height="45dp">
+    <com.wag.gamebox.ui.view.NavitationLayout
+        android:background="@color/themeYellow"
+        android:id="@+id/nav_info"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></com.wag.gamebox.ui.view.NavitationLayout>
+</RelativeLayout>
+
+   <android.support.v4.view.ViewPager
+       android:id="@+id/vp_info"
+       android:layout_below="@+id/nav_info"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"></android.support.v4.view.ViewPager>
+
+
+</LinearLayout>

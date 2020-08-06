@@ -1,0 +1,121 @@
+package com.quantark.dlgamebox.entity;
+
+import java.util.List;
+
+/**
+ * Created by James on 2018/10/11.
+ */
+public class HomeData {
+    /**
+     * code : 200
+     * msg : 请求成功
+     * time : 1539230061
+     * data : {"carousel":[{"id":1,"mobile_carousel_img":"/game/testimg/b985e450f3255886a02df4007b73453c.jpg","ios":"https://cavalry.wuming.com/ze3y2w6/u5y33/1009001","android":"https://cavalry.wuming.com/ze3y2w6/u5y33/1009001"},{"id":2,"mobile_carousel_img":"/game/testimg/8a0a2ccbd8e8e2af05ac780511222fcb.jpg","ios":"https://cavalry.wuming.com/ze3y2w6/u5y33/1009001","android":"https://cavalry.wuming.com/ze3y2w6/u5y33/1009001"},{"id":3,"mobile_carousel_img":"/game/testimg/28f906f675f0e4477c9f2a288222e1c7.png","ios":"https://cavalry.wuming.com/ze3y2w6/u5y33/1009001","android":"https://cavalry.wuming.com/ze3y2w6/u5y33/1009001"},{"id":4,"mobile_carousel_img":"/game/testimg/ffff8e15280f5b41c565788616c7d69e.png","ios":"https://cavalry.wuming.com/ze3y2w6/u5y33/1009001","android":"https://cavalry.wuming.com/ze3y2w6/u5y33/1009001"}],"hot":[{"id":1,"game_name":"王者传奇","logo_img":"/game/testimg/3c76aacec67c183de0d813149ce5357f.png","ios":"https://cavalry.wuming.com/ze3y2w6/u5y33/1009001","android":"https://cavalry.wuming.com/ze3y2w6/u5y33/1009001","game_size":"170M","type_name":"传奇类","game_details":"经典1.76传奇动作手游《王者传奇》震撼来袭！游戏继承\u201c传奇\u201d的核心玩法，延续了传奇世界的经典设定，完美复刻顶级蓝光画质。炫酷套装，百人同屏PK，重温经典传奇。"},{"id":2,"game_name":"仙妖劫","logo_img":"/game/testimg/3c76aacec67c183de0d813149ce5357f.png","ios":"https://cavalry.wuming.com/ze3y2w6/u5y33/1009001","android":"https://cavalry.wuming.com/ze3y2w6/u5y33/1009001","game_size":"175M","type_name":"三国slg","game_details":"《仙妖劫》是一款以古风武侠为题材的角色扮演类手机网络游戏，以南宋末年为历史背景，虚构出的江湖英雄与爱恨情仇。秀美壮丽的山河，精致细腻的完美画面为玩家完美还原真实的武林世界。酣畅淋漓的战斗与极致爽快技能动"},{"id":5,"game_name":"轩辕剑群侠录","logo_img":"/game/testimg/4667a5098c8d59f2fae7c52887b2be0d.png","ios":"https://cavalry.wuming.com/ze3y2w6/u5y33/1009001","android":"https://cavalry.wuming.com/ze3y2w6/u5y33/1009001","game_size":"200M","type_name":"策略卡牌","game_details":"大宇全系列正版授权，\u201c轩辕剑之父\u201d蔡明宏监制的全新手游。"}]}
+     */
+
+    private String code;
+    private String msg;
+    private String time;
+    private DataBean data;
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public DataBean getData() {
+        return data;
+    }
+
+    public void setData(DataBean data) {
+        this.data = data;
+    }
+
+    public static class DataBean {
+        private List<CarouselBean> carousel;
+        private List<GameInfo> hot;
+
+        public List<CarouselBean> getCarousel() {
+            return carousel;
+        }
+
+        public void setCarousel(List<CarouselBean> carousel) {
+            this.carousel = carousel;
+        }
+
+        public List<GameInfo> getHot() {
+            return hot;
+        }
+
+        public void setHot(List<GameInfo> hot) {
+            this.hot = hot;
+        }
+
+        public static class CarouselBean {
+            /**
+             * id : 1
+             * mobile_carousel_img : /game/testimg/b985e450f3255886a02df4007b73453c.jpg
+             * ios : https://cavalry.wuming.com/ze3y2w6/u5y33/1009001
+             * android : https://cavalry.wuming.com/ze3y2w6/u5y33/1009001
+             */
+
+            private int id;
+            private String mobile_carousel_img;
+            private String ios;
+            private String android;
+
+            public int getId() {
+                return id;
+            }
+
+            public void setId(int id) {
+                this.id = id;
+            }
+
+            public String getMobile_carousel_img() {
+                return mobile_carousel_img;
+            }
+
+            public void setMobile_carousel_img(String mobile_carousel_img) {
+                this.mobile_carousel_img = mobile_carousel_img;
+            }
+
+            public String getIos() {
+                return ios;
+            }
+
+            public void setIos(String ios) {
+                this.ios = ios;
+            }
+
+            public String getAndroid() {
+                return android;
+            }
+
+            public void setAndroid(String android) {
+                this.android = android;
+            }
+        }
+
+
+    }
+}

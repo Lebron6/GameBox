@@ -1,0 +1,134 @@
+package com.wag.gamebox.api;
+
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.xutils.common.Callback;
+import org.xutils.http.RequestParams;
+import org.xutils.x;
+
+import static com.wag.gamebox.api.Constant.REQUEST_FAIL;
+import static com.wag.gamebox.api.Constant.REQUEST_SUCCESS;
+
+
+/**
+ * Created by James on 2018/10/11.
+ */
+public class HttpRequestUtils {
+    public HttpRequestUtils(Handler mHandler) {
+        this.mHandler = mHandler;
+    }
+
+    Handler mHandler;
+
+    public void doPost(final RequestParams params) {
+
+        x.http().post(params, new Callback.CommonCallback<String>() {
+            @Override
+            public void onCancelled(CancelledException arg0) {
+            }
+            @Override
+            public void onError(Throwable arg0, boolean arg1) {
+                Log.e(params.getUri(), "onFailure info =" + arg0.toString());
+                noticeResult(REQUEST_FAIL, "请求失败");
+            }
+
+            @Override
+            public void onFinished() {
+
+            }
+
+            @Override
+            public void onSuccess(String json) {
+                try {
+                    JSONObject jsonObject=new JSONObject(json);
+                    if (jsonObject.getString("code").equals("200")||jsonObject.getString("code").equals("300")){
+                        noticeResult(REQUEST_SUCCESS, json);
+                    }else{
+                        noticeResult(REQUEST_FAIL, jsonObject.getString("msg"));
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+//            @Override
+//            public boolean onCache(String json) {
+//                try {
+//                    JSONObject jsonObject=new JSONObject(json);
+//                    if (jsonObject.getString("code").equals("200")||jsonObject.getString("code").equals("300")){
+//                        noticeResult(REQUEST_SUCCESS, json);
+//                    }else{
+//                        noticeResult(REQUEST_FAIL, jsonObject.getString("msg"));
+//                    }
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//                return true;
+//            }
+        });
+    }
+
+    public void doGet(final RequestParams params) {
+        x.http().get(params, new Callback.CommonCallback<String>() {
+            @Override
+            public void onCancelled(CancelledException arg0) {
+                Log.e(params.getUri(), "onCancelled");
+            }
+
+            @Override
+            public void onError(Throwable arg0, boolean arg1) {
+                Log.e(params.getUri(), "onFailure info =" + arg0.toString());
+                noticeResult(REQUEST_FAIL, "请求失败");
+            }
+
+            @Override
+            public void onFinished() {
+                Log.e(params.getUri(), "onFinished");
+            }
+
+            @Override
+            public void onSuccess(String json) {
+                try {
+                    JSONObject jsonObject=new JSONObject(json);
+                    if (jsonObject.getString("code").equals("200")||jsonObject.getString("code").equals("300")){
+                        noticeResult(REQUEST_SUCCESS, json);
+                    }else{
+                        noticeResult(REQUEST_FAIL, jsonObject.getString("msg"));
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+//            @Override
+//            public boolean onCache(String json) {
+//                try {
+//                    JSONObject jsonObject=new JSONObject(json);
+//                    if (jsonObject.getString("code").equals("200")||jsonObject.getString("code").equals("300")){
+//                        noticeResult(REQUEST_SUCCESS, json);
+//                    }else{
+//                        noticeResult(REQUEST_FAIL, jsonObject.getString("msg"));
+//                    }
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//
+//                return true;
+//            }
+        });
+    }
+
+    private void noticeResult(int type, Object obj) {
+        Message msg = new Message();
+        msg.what = type;
+        msg.obj = obj;
+        if (null != mHandler) {
+            mHandler.sendMessage(msg);
+        }
+    }
+}

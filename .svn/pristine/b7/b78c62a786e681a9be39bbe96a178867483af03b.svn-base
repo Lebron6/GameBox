@@ -1,0 +1,100 @@
+// Generated code from Butter Knife. Do not modify!
+package com.quantark.dlgamebox.ui.activity;
+
+import android.support.annotation.CallSuper;
+import android.support.annotation.UiThread;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import butterknife.Unbinder;
+import butterknife.internal.DebouncingOnClickListener;
+import butterknife.internal.Utils;
+import com.quantark.dlgamebox.R;
+import java.lang.IllegalStateException;
+import java.lang.Override;
+
+public class BuyPTBActivity_ViewBinding implements Unbinder {
+  private BuyPTBActivity target;
+
+  private View view2131165506;
+
+  @UiThread
+  public BuyPTBActivity_ViewBinding(BuyPTBActivity target) {
+    this(target, target.getWindow().getDecorView());
+  }
+
+  @UiThread
+  public BuyPTBActivity_ViewBinding(final BuyPTBActivity target, View source) {
+    this.target = target;
+
+    View view;
+    target.viewStatusBar = Utils.findRequiredViewAsType(source, R.id.view_status_bar, "field 'viewStatusBar'", TextView.class);
+    target.ivBack = Utils.findRequiredViewAsType(source, R.id.iv_back, "field 'ivBack'", ImageView.class);
+    target.layoutBack = Utils.findRequiredViewAsType(source, R.id.layout_back, "field 'layoutBack'", LinearLayout.class);
+    target.title = Utils.findRequiredViewAsType(source, R.id.title, "field 'title'", TextView.class);
+    target.ivShare = Utils.findRequiredViewAsType(source, R.id.iv_share, "field 'ivShare'", ImageView.class);
+    target.ivSreach = Utils.findRequiredViewAsType(source, R.id.iv_sreach, "field 'ivSreach'", ImageView.class);
+    target.layoutTop = Utils.findRequiredViewAsType(source, R.id.layout_top, "field 'layoutTop'", RelativeLayout.class);
+    target.rbOne = Utils.findRequiredViewAsType(source, R.id.rb_one, "field 'rbOne'", CheckBox.class);
+    target.rbTwo = Utils.findRequiredViewAsType(source, R.id.rb_two, "field 'rbTwo'", CheckBox.class);
+    target.rbThree = Utils.findRequiredViewAsType(source, R.id.rb_three, "field 'rbThree'", CheckBox.class);
+    target.rbFour = Utils.findRequiredViewAsType(source, R.id.rb_four, "field 'rbFour'", CheckBox.class);
+    target.rbFive = Utils.findRequiredViewAsType(source, R.id.rb_five, "field 'rbFive'", CheckBox.class);
+    target.etInputNum = Utils.findRequiredViewAsType(source, R.id.et_input_num, "field 'etInputNum'", EditText.class);
+    target.txtY = Utils.findRequiredViewAsType(source, R.id.txt_y, "field 'txtY'", TextView.class);
+    target.tvPtbNum = Utils.findRequiredViewAsType(source, R.id.tv_ptb_num, "field 'tvPtbNum'", TextView.class);
+    target.txtPay = Utils.findRequiredViewAsType(source, R.id.txt_pay, "field 'txtPay'", TextView.class);
+    target.imgAlipay = Utils.findRequiredViewAsType(source, R.id.img_alipay, "field 'imgAlipay'", ImageView.class);
+    target.cbAliPay = Utils.findRequiredViewAsType(source, R.id.cb_alipay, "field 'cbAliPay'", CheckBox.class);
+    target.imgWechatPay = Utils.findRequiredViewAsType(source, R.id.img_wechat_pay, "field 'imgWechatPay'", ImageView.class);
+    target.cbWechatPay = Utils.findRequiredViewAsType(source, R.id.cb_wechat_pay, "field 'cbWechatPay'", CheckBox.class);
+    view = Utils.findRequiredView(source, R.id.tv_buy_ptb, "field 'tvBuyPtb' and method 'onViewClicked'");
+    target.tvBuyPtb = Utils.castView(view, R.id.tv_buy_ptb, "field 'tvBuyPtb'", TextView.class);
+    view2131165506 = view;
+    view.setOnClickListener(new DebouncingOnClickListener() {
+      @Override
+      public void doClick(View p0) {
+        target.onViewClicked();
+      }
+    });
+    target.rgNum = Utils.findRequiredViewAsType(source, R.id.rg_num, "field 'rgNum'", LinearLayout.class);
+  }
+
+  @Override
+  @CallSuper
+  public void unbind() {
+    BuyPTBActivity target = this.target;
+    if (target == null) throw new IllegalStateException("Bindings already cleared.");
+    this.target = null;
+
+    target.viewStatusBar = null;
+    target.ivBack = null;
+    target.layoutBack = null;
+    target.title = null;
+    target.ivShare = null;
+    target.ivSreach = null;
+    target.layoutTop = null;
+    target.rbOne = null;
+    target.rbTwo = null;
+    target.rbThree = null;
+    target.rbFour = null;
+    target.rbFive = null;
+    target.etInputNum = null;
+    target.txtY = null;
+    target.tvPtbNum = null;
+    target.txtPay = null;
+    target.imgAlipay = null;
+    target.cbAliPay = null;
+    target.imgWechatPay = null;
+    target.cbWechatPay = null;
+    target.tvBuyPtb = null;
+    target.rgNum = null;
+
+    view2131165506.setOnClickListener(null);
+    view2131165506 = null;
+  }
+}

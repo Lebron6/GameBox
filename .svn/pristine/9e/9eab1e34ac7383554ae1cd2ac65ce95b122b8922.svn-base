@@ -1,0 +1,93 @@
+package com.quantark.dlgamebox.entity;
+
+/**
+ * Created by James on 2018/10/25.
+ */
+public class MyPage {
+
+    private String code;
+    private String msg;
+    private String time;
+    private DataBean data;
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public DataBean getData() {
+        return data;
+    }
+
+    public void setData(DataBean data) {
+        this.data = data;
+    }
+
+    public static class DataBean {
+
+        private String head_img;
+        private String wallet;
+        private String user_login;
+        private String user_name;
+        private int binding;
+
+        public String getUser_name() {
+            return user_name;
+        }
+
+        public void setUser_name(String user_name) {
+            this.user_name = user_name;
+        }
+
+        public int getBinding() {
+            return binding;
+        }
+
+        public void setBinding(int binding) {
+            this.binding = binding;
+        }
+
+        public String getHead_img() {
+            return head_img;
+        }
+
+        public void setHead_img(String head_img) {
+            this.head_img = head_img;
+        }
+
+        public String getWallet() {
+            return wallet;
+        }
+
+        public void setWallet(String wallet) {
+            this.wallet = wallet;
+        }
+
+        public String getUser_login() {
+            return user_login;
+        }
+
+        public void setUser_login(String user_login) {
+            this.user_login = user_login;
+        }
+    }
+}

@@ -1,0 +1,106 @@
+package com.wag.gamebox.ui.activity;
+
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import com.wag.gamebox.R;
+import com.wag.gamebox.entity.GameInfo;
+import com.wag.gamebox.tools.DownLoadManger;
+import com.wag.gamebox.tools.RecyclerViewHelper;
+import com.wag.gamebox.ui.adapter.HotGameListAdapter;
+import com.wag.gamebox.ui.view.LoadingManger;
+import com.wag.gamebox.ui.view.TitleBarManger;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
+/**
+ * Created by James on 2018/9/29.
+ */
+public class DownLoadingActivity extends BaseActivity {
+    @BindView(R.id.rv_mygame)
+    RecyclerView rvMygame;
+    @BindView(R.id.view_status_bar)
+    TextView viewStatusBar;
+    @BindView(R.id.iv_share)
+    ImageView ivShare;
+    @BindView(R.id.layout_top)
+    RelativeLayout layoutTop;
+    @BindView(R.id.error)
+    RelativeLayout error;
+    private HotGameListAdapter adapter;
+    private List<GameInfo> gameInfos = new ArrayList<>();
+
+    public static void actionStart(Context context) {
+        Intent intent = new Intent(context, DownLoadingActivity.class);
+        context.startActivity(intent);
+    }
+
+    @Override
+    protected void initTitle() {
+        TitleBarManger manger = TitleBarManger.getInsetance();
+        manger.setContext(this);
+        manger.setTitle("正在下载");
+        manger.setBack();
+        if (adapter != null) {
+            adapter.start();
+            adapter.state();
+            adapter.notifyDataSetChanged();
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        if (adapter != null) {
+            adapter.delete();
+        }
+        super.onPause();
+    }
+
+    @Override
+    protected int attachLayoutRes() {
+        return R.layout.activity_my_game;
+    }
+
+    @Override
+    protected void initViews() {
+        adapter = new HotGameListAdapter(this);
+
+    }
+
+    private void initListViewData() {
+        LoadingManger.getInsetance().setView(error);
+        if (gameInfos != null) {
+            gameInfos.clear();
+        }
+        gameInfos = DownLoadManger.getInstance().getDownLoadingGames();
+        if (gameInfos!=null&&gameInfos.size()>0){
+            adapter.setDatas(gameInfos);
+            RecyclerViewHelper.initRecyclerViewV(this, rvMygame, true, adapter,true);
+            LoadingManger.getInsetance().stopFinishLoading(true);
+        }else{
+            LoadingManger.getInsetance().stopFinishLoading("暂无下载记录",false);
+        }
+
+    }
+
+    @Override
+    protected void initDatas() {
+        initListViewData();
+    }
+
+    @OnClick(R.id.iv_back)
+    public void onViewClicked() {
+        finish();
+    }
+
+}

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="afterDescendants"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="80.0dip"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="0dip"
+                android:layout_height="70.0dip"
+                android:layout_alignParentLeft="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginRight="5dp"
+                android:layout_weight="3">
+
+                <com.wag.gamebox.ui.view.FilletImageView
+                    android:id="@+id/home_game_icon"
+                    android:layout_width="63.0dip"
+                    android:layout_height="63.0dip"
+                    android:layout_centerInParent="true"
+                    android:scaleType="fitXY"
+                    android:src="@color/themeYellow" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="8"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_marginRight="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/home_game_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxWidth="150.0dip"
+                        android:singleLine="true"
+                        android:text="寻仙"
+                        android:maxLength="6"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/colorTextBlack"
+                        android:textSize="15sp" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_marginRight="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3.0dip"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+
+                    <TextView
+                        android:id="@+id/home_game_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:singleLine="true"
+                        android:text="角色扮演"
+                        android:textColor="@color/themeGrayText"
+                        android:textSize="12sp" />
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginBottom="3dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:background="@color/themeGrayText" />
+                    <TextView
+                        android:id="@+id/home_game_size"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="12000mb"
+                        android:singleLine="true"
+                        android:textColor="@color/themeGrayText"
+                        android:textSize="12sp" />
+                </LinearLayout>
+<TextView
+    android:layout_marginTop="2dp"
+    android:id="@+id/tv_open_time"
+    android:text="2018.10.15     8:30"
+    android:singleLine="true"
+    android:textColor="@color/themeYellow"
+    android:textSize="12sp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+            <RelativeLayout
+                android:layout_width="0dip"
+                android:layout_height="70.0dip"
+                android:layout_alignParentLeft="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="5dp"
+                android:layout_weight="3.5">
+
+
+                <TextView
+                    android:id="@+id/tv_down_load"
+                    android:layout_width="60dp"
+                    android:layout_height="28.0dip"
+                    android:layout_centerInParent="true"
+                    android:textColor="@drawable/text_color_selector_m"
+                    android:background="@drawable/text_bg_selector_m"
+                    android:gravity="center"
+                    android:text="下载"
+                    android:textSize="14sp"
+                    ></TextView>
+
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,120 @@
+// Generated code from Butter Knife. Do not modify!
+package com.quantark.dlgamebox.ui.activity;
+
+import android.support.annotation.CallSuper;
+import android.support.annotation.UiThread;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import butterknife.Unbinder;
+import butterknife.internal.DebouncingOnClickListener;
+import butterknife.internal.Utils;
+import com.quantark.dlgamebox.R;
+import java.lang.IllegalStateException;
+import java.lang.Override;
+
+public class ShareAppActivity_ViewBinding implements Unbinder {
+  private ShareAppActivity target;
+
+  private View view2131165363;
+
+  private View view2131165364;
+
+  private View view2131165350;
+
+  private View view2131165351;
+
+  private View view2131165340;
+
+  @UiThread
+  public ShareAppActivity_ViewBinding(ShareAppActivity target) {
+    this(target, target.getWindow().getDecorView());
+  }
+
+  @UiThread
+  public ShareAppActivity_ViewBinding(final ShareAppActivity target, View source) {
+    this.target = target;
+
+    View view;
+    target.layoutTop = Utils.findRequiredViewAsType(source, R.id.layout_top, "field 'layoutTop'", RelativeLayout.class);
+    target.layoutTxt = Utils.findRequiredViewAsType(source, R.id.layout_txt, "field 'layoutTxt'", LinearLayout.class);
+    target.imgQrCode = Utils.findRequiredViewAsType(source, R.id.img_qr_code, "field 'imgQrCode'", ImageView.class);
+    target.txtYellow = Utils.findRequiredViewAsType(source, R.id.txt_yellow, "field 'txtYellow'", TextView.class);
+    view = Utils.findRequiredView(source, R.id.layout_wechat, "field 'layoutWechat' and method 'onViewClicked'");
+    target.layoutWechat = Utils.castView(view, R.id.layout_wechat, "field 'layoutWechat'", LinearLayout.class);
+    view2131165363 = view;
+    view.setOnClickListener(new DebouncingOnClickListener() {
+      @Override
+      public void doClick(View p0) {
+        target.onViewClicked(p0);
+      }
+    });
+    view = Utils.findRequiredView(source, R.id.layout_wechat_friends, "field 'layoutWechatFriends' and method 'onViewClicked'");
+    target.layoutWechatFriends = Utils.castView(view, R.id.layout_wechat_friends, "field 'layoutWechatFriends'", LinearLayout.class);
+    view2131165364 = view;
+    view.setOnClickListener(new DebouncingOnClickListener() {
+      @Override
+      public void doClick(View p0) {
+        target.onViewClicked(p0);
+      }
+    });
+    view = Utils.findRequiredView(source, R.id.layout_qq, "field 'layoutQq' and method 'onViewClicked'");
+    target.layoutQq = Utils.castView(view, R.id.layout_qq, "field 'layoutQq'", LinearLayout.class);
+    view2131165350 = view;
+    view.setOnClickListener(new DebouncingOnClickListener() {
+      @Override
+      public void doClick(View p0) {
+        target.onViewClicked(p0);
+      }
+    });
+    view = Utils.findRequiredView(source, R.id.layout_qqzone, "field 'layoutQqzone' and method 'onViewClicked'");
+    target.layoutQqzone = Utils.castView(view, R.id.layout_qqzone, "field 'layoutQqzone'", LinearLayout.class);
+    view2131165351 = view;
+    view.setOnClickListener(new DebouncingOnClickListener() {
+      @Override
+      public void doClick(View p0) {
+        target.onViewClicked(p0);
+      }
+    });
+    view = Utils.findRequiredView(source, R.id.layout_copy, "field 'layoutCopy' and method 'onViewClicked'");
+    target.layoutCopy = Utils.castView(view, R.id.layout_copy, "field 'layoutCopy'", LinearLayout.class);
+    view2131165340 = view;
+    view.setOnClickListener(new DebouncingOnClickListener() {
+      @Override
+      public void doClick(View p0) {
+        target.onViewClicked(p0);
+      }
+    });
+  }
+
+  @Override
+  @CallSuper
+  public void unbind() {
+    ShareAppActivity target = this.target;
+    if (target == null) throw new IllegalStateException("Bindings already cleared.");
+    this.target = null;
+
+    target.layoutTop = null;
+    target.layoutTxt = null;
+    target.imgQrCode = null;
+    target.txtYellow = null;
+    target.layoutWechat = null;
+    target.layoutWechatFriends = null;
+    target.layoutQq = null;
+    target.layoutQqzone = null;
+    target.layoutCopy = null;
+
+    view2131165363.setOnClickListener(null);
+    view2131165363 = null;
+    view2131165364.setOnClickListener(null);
+    view2131165364 = null;
+    view2131165350.setOnClickListener(null);
+    view2131165350 = null;
+    view2131165351.setOnClickListener(null);
+    view2131165351 = null;
+    view2131165340.setOnClickListener(null);
+    view2131165340 = null;
+  }
+}

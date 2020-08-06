@@ -1,0 +1,15 @@
+package com.quantark.dlgamebox.callback;
+
+import com.quantark.dlgamebox.tools.DownLoadManger;
+
+import com.quantark.dlgamebox.entity.GameInfo;
+
+public interface DownloadObserver {
+    /**
+     * 当状态改变时的回调
+     *
+     * @param manager
+     * @param info
+     */
+    void onDownloadStateChanged(DownLoadManger manager, GameInfo info);
+}

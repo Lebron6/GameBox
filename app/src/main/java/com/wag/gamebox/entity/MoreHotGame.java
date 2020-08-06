@@ -1,0 +1,53 @@
+package com.wag.gamebox.entity;
+
+import java.util.List;
+
+/**
+ * Created by James on 2018/10/16.
+ */
+public class MoreHotGame {
+    /**
+     * code : 200
+     * msg : 请求成功
+     * time : 1537928333
+     * data : [{"id":1,"game_name":"游戏名称","logo_img":"游戏logo","ios":"苹果下载地址","android":"安卓下载地址","game_size":"大小","type_name":"分类","game_details":"游戏简介"}]
+     */
+
+    private String code;
+    private String msg;
+    private String time;
+    private List<GameInfo> data;
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public List<GameInfo> getData() {
+        return data;
+    }
+
+    public void setData(List<GameInfo> data) {
+        this.data = data;
+    }
+
+}

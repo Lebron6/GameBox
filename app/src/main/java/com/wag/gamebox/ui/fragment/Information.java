@@ -1,0 +1,54 @@
+package com.wag.gamebox.ui.fragment;
+
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
+import android.widget.TextView;
+import com.wag.gamebox.R;
+import com.wag.gamebox.ui.adapter.NavPagerAdapter;
+import com.wag.gamebox.ui.fragment.info.Info;
+import com.wag.gamebox.ui.view.NavitationLayout;
+import java.util.ArrayList;
+import java.util.List;
+import butterknife.BindView;
+
+/**
+ * 资讯
+ * Created by LeBron on 2017/2/6.
+ */
+
+public class Information extends BaseFragment {
+
+    @BindView(R.id.view_status_bar)
+    TextView viewStatusBar;
+    @BindView(R.id.nav_info)
+    NavitationLayout navInfo;
+    @BindView(R.id.vp_info)
+    ViewPager vpInfo;
+
+    @Override
+    protected int attachLayoutRes() {
+        return R.layout.fragment_information;
+    }
+
+    @Override
+    protected void initViews() {
+//        String[] strings = {"资讯", "公告","活动"};
+//        List<Fragment> fragments2 = new ArrayList<>();
+//        fragments2.add(new Info(strings[0]));
+//        fragments2.add(new Info(strings[1]));
+//        fragments2.add(new Info(strings[2]));
+//        NavPagerAdapter viewPagerAdapter2 = new NavPagerAdapter(getChildFragmentManager());
+//        viewPagerAdapter2.setData( fragments2);
+//        vpInfo.setAdapter(viewPagerAdapter2);
+//        vpInfo.setCurrentItem(0);
+//        navInfo.setViewPager(getActivity(), strings, vpInfo, R.color.colorStroken, R.color.themeWhite, 14, 16, 0, 55,true);
+//        navInfo.setBgLine(getActivity(), 0, R.color.themeYellow);
+//        navInfo.setNavLine(getActivity(), 2, R.color.themeWhite,0);
+    }
+
+    @Override
+    protected void initDatas() {
+
+    }
+
+}

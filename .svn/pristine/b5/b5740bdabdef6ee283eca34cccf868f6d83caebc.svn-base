@@ -1,0 +1,65 @@
+// Generated code from Butter Knife. Do not modify!
+package com.quantark.dlgamebox.ui.activity;
+
+import android.support.annotation.CallSuper;
+import android.support.annotation.UiThread;
+import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import butterknife.Unbinder;
+import butterknife.internal.DebouncingOnClickListener;
+import butterknife.internal.Utils;
+import com.quantark.dlgamebox.R;
+import com.quantark.dlgamebox.ui.view.NavitationLayout;
+import java.lang.IllegalStateException;
+import java.lang.Override;
+
+public class ServiceListActivity_ViewBinding implements Unbinder {
+  private ServiceListActivity target;
+
+  private View view2131165325;
+
+  @UiThread
+  public ServiceListActivity_ViewBinding(ServiceListActivity target) {
+    this(target, target.getWindow().getDecorView());
+  }
+
+  @UiThread
+  public ServiceListActivity_ViewBinding(final ServiceListActivity target, View source) {
+    this.target = target;
+
+    View view;
+    target.viewStatusBar = Utils.findRequiredViewAsType(source, R.id.view_status_bar, "field 'viewStatusBar'", TextView.class);
+    view = Utils.findRequiredView(source, R.id.iv_back, "field 'ivBack' and method 'onViewClicked'");
+    target.ivBack = Utils.castView(view, R.id.iv_back, "field 'ivBack'", ImageView.class);
+    view2131165325 = view;
+    view.setOnClickListener(new DebouncingOnClickListener() {
+      @Override
+      public void doClick(View p0) {
+        target.onViewClicked();
+      }
+    });
+    target.layoutTop = Utils.findRequiredViewAsType(source, R.id.layout_top, "field 'layoutTop'", RelativeLayout.class);
+    target.navSevice = Utils.findRequiredViewAsType(source, R.id.nav_sevice, "field 'navSevice'", NavitationLayout.class);
+    target.vpSevice = Utils.findRequiredViewAsType(source, R.id.vp_sevice, "field 'vpSevice'", ViewPager.class);
+  }
+
+  @Override
+  @CallSuper
+  public void unbind() {
+    ServiceListActivity target = this.target;
+    if (target == null) throw new IllegalStateException("Bindings already cleared.");
+    this.target = null;
+
+    target.viewStatusBar = null;
+    target.ivBack = null;
+    target.layoutTop = null;
+    target.navSevice = null;
+    target.vpSevice = null;
+
+    view2131165325.setOnClickListener(null);
+    view2131165325 = null;
+  }
+}

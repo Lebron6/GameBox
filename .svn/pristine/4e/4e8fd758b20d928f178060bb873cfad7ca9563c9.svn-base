@@ -1,0 +1,53 @@
+package com.quantark.dlgamebox.entity;
+
+import java.util.List;
+
+/**
+ * Created by James on 2018/10/22.
+ */
+public class QueryResult {
+    /**
+     * code : 200
+     * msg : 请求成功
+     * time : 1540178376
+     * data : [{"game_name":"王者传奇","game_details":"经典1.76传奇动作手游《王者传奇》震撼来袭！游戏继承\u201c传奇\u201d的核心玩法，延续了传奇世界的经典设定，完美复刻顶级蓝光画质。炫酷套装，百人同屏PK，重温经典传奇。","logo_img":"/game/testimg/3c76aacec67c183de0d813149ce5357f.png","game_size":"170M","type_name":"传奇类","ios_package_name":null,"android_package_name":null}]
+     */
+
+    private String code;
+    private String msg;
+    private String time;
+    private List<GameInfo> data;
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public List<GameInfo> getData() {
+        return data;
+    }
+
+    public void setData(List<GameInfo> data) {
+        this.data = data;
+    }
+
+}

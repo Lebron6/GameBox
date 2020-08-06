@@ -1,0 +1,164 @@
+// Generated code from Butter Knife. Do not modify!
+package com.quantark.dlgamebox.ui.fragment;
+
+import android.support.annotation.CallSuper;
+import android.support.annotation.UiThread;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import butterknife.Unbinder;
+import butterknife.internal.DebouncingOnClickListener;
+import butterknife.internal.Utils;
+import com.quantark.dlgamebox.R;
+import com.quantark.dlgamebox.ui.view.FlashView;
+import com.quantark.dlgamebox.ui.view.NotifyingScrollView;
+import java.lang.IllegalStateException;
+import java.lang.Override;
+
+public class Home_ViewBinding implements Unbinder {
+  private Home target;
+
+  private View view2131165233;
+
+  private View view2131165231;
+
+  private View view2131165234;
+
+  private View view2131165235;
+
+  private View view2131165429;
+
+  private View view2131165566;
+
+  private View view2131165498;
+
+  @UiThread
+  public Home_ViewBinding(final Home target, View source) {
+    this.target = target;
+
+    View view;
+    target.viewStatusBar = Utils.findRequiredViewAsType(source, R.id.view_status_bar, "field 'viewStatusBar'", TextView.class);
+    target.flashView = Utils.findRequiredViewAsType(source, R.id.flash_view, "field 'flashView'", FlashView.class);
+    view = Utils.findRequiredView(source, R.id.center_my_game, "field 'centerMyGame' and method 'onViewClicked'");
+    target.centerMyGame = Utils.castView(view, R.id.center_my_game, "field 'centerMyGame'", LinearLayout.class);
+    view2131165233 = view;
+    view.setOnClickListener(new DebouncingOnClickListener() {
+      @Override
+      public void doClick(View p0) {
+        target.onViewClicked(p0);
+      }
+    });
+    view = Utils.findRequiredView(source, R.id.center_classification, "field 'centerClassification' and method 'onViewClicked'");
+    target.centerClassification = Utils.castView(view, R.id.center_classification, "field 'centerClassification'", LinearLayout.class);
+    view2131165231 = view;
+    view.setOnClickListener(new DebouncingOnClickListener() {
+      @Override
+      public void doClick(View p0) {
+        target.onViewClicked(p0);
+      }
+    });
+    view = Utils.findRequiredView(source, R.id.center_ranking, "field 'centerRanking' and method 'onViewClicked'");
+    target.centerRanking = Utils.castView(view, R.id.center_ranking, "field 'centerRanking'", LinearLayout.class);
+    view2131165234 = view;
+    view.setOnClickListener(new DebouncingOnClickListener() {
+      @Override
+      public void doClick(View p0) {
+        target.onViewClicked(p0);
+      }
+    });
+    target.textView = Utils.findRequiredViewAsType(source, R.id.textView, "field 'textView'", TextView.class);
+    view = Utils.findRequiredView(source, R.id.center_service, "field 'centerService' and method 'onViewClicked'");
+    target.centerService = Utils.castView(view, R.id.center_service, "field 'centerService'", LinearLayout.class);
+    view2131165235 = view;
+    view.setOnClickListener(new DebouncingOnClickListener() {
+      @Override
+      public void doClick(View p0) {
+        target.onViewClicked(p0);
+      }
+    });
+    target.tu1 = Utils.findRequiredViewAsType(source, R.id.tu1, "field 'tu1'", ImageView.class);
+    view = Utils.findRequiredView(source, R.id.relativeLayout_to_hot, "field 'relativeLayoutToHot' and method 'onViewClicked'");
+    target.relativeLayoutToHot = Utils.castView(view, R.id.relativeLayout_to_hot, "field 'relativeLayoutToHot'", RelativeLayout.class);
+    view2131165429 = view;
+    view.setOnClickListener(new DebouncingOnClickListener() {
+      @Override
+      public void doClick(View p0) {
+        target.onViewClicked(p0);
+      }
+    });
+    target.rvHot = Utils.findRequiredViewAsType(source, R.id.rv_hot, "field 'rvHot'", RecyclerView.class);
+    target.scrollViewHome = Utils.findRequiredViewAsType(source, R.id.scrollView_home, "field 'scrollViewHome'", NotifyingScrollView.class);
+    target.myInfo = Utils.findRequiredViewAsType(source, R.id.my_info, "field 'myInfo'", ImageView.class);
+    target.logo1 = Utils.findRequiredViewAsType(source, R.id.logo1, "field 'logo1'", RelativeLayout.class);
+    target.searchText = Utils.findRequiredViewAsType(source, R.id.search_text, "field 'searchText'", TextView.class);
+    target.imageView1 = Utils.findRequiredViewAsType(source, R.id.imageView1, "field 'imageView1'", ImageView.class);
+    view = Utils.findRequiredView(source, R.id.view_search, "field 'viewSearch' and method 'onViewClicked'");
+    target.viewSearch = Utils.castView(view, R.id.view_search, "field 'viewSearch'", RelativeLayout.class);
+    view2131165566 = view;
+    view.setOnClickListener(new DebouncingOnClickListener() {
+      @Override
+      public void doClick(View p0) {
+        target.onViewClicked(p0);
+      }
+    });
+    view = Utils.findRequiredView(source, R.id.title_download, "field 'titleDownload' and method 'onViewClicked'");
+    target.titleDownload = Utils.castView(view, R.id.title_download, "field 'titleDownload'", ImageView.class);
+    view2131165498 = view;
+    view.setOnClickListener(new DebouncingOnClickListener() {
+      @Override
+      public void doClick(View p0) {
+        target.onViewClicked(p0);
+      }
+    });
+    target.downloadingCount = Utils.findRequiredViewAsType(source, R.id.downloading_count, "field 'downloadingCount'", TextView.class);
+    target.topBar = Utils.findRequiredViewAsType(source, R.id.top_bar, "field 'topBar'", RelativeLayout.class);
+    target.titleView = Utils.findRequiredViewAsType(source, R.id.title_view, "field 'titleView'", LinearLayout.class);
+  }
+
+  @Override
+  @CallSuper
+  public void unbind() {
+    Home target = this.target;
+    if (target == null) throw new IllegalStateException("Bindings already cleared.");
+    this.target = null;
+
+    target.viewStatusBar = null;
+    target.flashView = null;
+    target.centerMyGame = null;
+    target.centerClassification = null;
+    target.centerRanking = null;
+    target.textView = null;
+    target.centerService = null;
+    target.tu1 = null;
+    target.relativeLayoutToHot = null;
+    target.rvHot = null;
+    target.scrollViewHome = null;
+    target.myInfo = null;
+    target.logo1 = null;
+    target.searchText = null;
+    target.imageView1 = null;
+    target.viewSearch = null;
+    target.titleDownload = null;
+    target.downloadingCount = null;
+    target.topBar = null;
+    target.titleView = null;
+
+    view2131165233.setOnClickListener(null);
+    view2131165233 = null;
+    view2131165231.setOnClickListener(null);
+    view2131165231 = null;
+    view2131165234.setOnClickListener(null);
+    view2131165234 = null;
+    view2131165235.setOnClickListener(null);
+    view2131165235 = null;
+    view2131165429.setOnClickListener(null);
+    view2131165429 = null;
+    view2131165566.setOnClickListener(null);
+    view2131165566 = null;
+    view2131165498.setOnClickListener(null);
+    view2131165498 = null;
+  }
+}

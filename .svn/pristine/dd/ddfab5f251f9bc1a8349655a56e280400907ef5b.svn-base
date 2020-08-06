@@ -1,0 +1,191 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:background="@color/themeWhite"
+    >
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/top_bar"/>
+
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_marginRight="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/iv_gift_icon"
+            android:layout_width="80dp"
+            android:layout_height="80dp" />
+        <TextView
+            android:id="@+id/tv_gift_name"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/colorTextBlack"
+            android:text="仙逆-新手礼包"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+<RelativeLayout
+    android:id="@+id/layout_recever"
+    android:visibility="visible"
+    android:gravity="center_vertical"
+    android:layout_marginTop="20dp"
+    android:background="@drawable/gift_details_code_bg"
+    android:layout_width="match_parent"
+    android:layout_height="40dp">
+
+    <TextView
+        android:id="@+id/tv_gift_code"
+        android:textSize="12sp"
+        android:layout_marginLeft="20dp"
+        android:text="礼包兑换码:7777777"
+        android:textColor="@color/themeGrayText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/tv_copy"
+        android:layout_marginRight="20dp"
+        android:textColor="@color/themeYellow"
+        android:layout_alignParentRight="true"
+        android:textSize="13sp"
+        android:text="复制"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>
+</LinearLayout>
+    <View
+        android:layout_marginTop="20dp"
+        android:background="@color/colorBgGray"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:paddingLeft="10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+            <View
+                android:layout_width="4dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
+                android:background="@drawable/theme_bg_yellow"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:text="礼包内容"
+                android:textSize="15sp"
+                android:textColor="@color/colorTextBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_gift_details"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="大元宝*66，大金币*66666，通关文牒*8，大肉块*10，元宝*66，金币*66666，通关文牒*8，大肉块*10"
+            android:textSize="13sp"
+            android:textColor="@color/colorTextBlack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:paddingLeft="10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+            <View
+                android:layout_width="4dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
+                android:background="@drawable/theme_bg_yellow"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:text="礼包兑换期限"
+                android:textSize="15sp"
+                android:textColor="@color/colorTextBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_gift_time"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="2018年8月22日 00：00 - 2018年8月22日 00：00"
+            android:textSize="13sp"
+            android:textColor="@color/colorTextBlack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:paddingLeft="10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+            <View
+                android:layout_width="4dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
+                android:background="@drawable/theme_bg_yellow"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:text="使用方法"
+                android:textSize="15sp"
+                android:textColor="@color/colorTextBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_use_type"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="主界面上方->福利>其他活动->礼包码领取->输入礼包码即可领取成功"
+            android:textSize="13sp"
+            android:textColor="@color/colorTextBlack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>
+    <TextView
+        android:id="@+id/tv_get_gift"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:text="领取礼包"
+        android:layout_marginBottom="20dp"
+        android:textColor="@drawable/text_color_selector_m"
+        android:background="@drawable/text_bg_selector_m"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+</RelativeLayout>

@@ -1,0 +1,149 @@
+package com.wag.gamebox.ui.activity;
+
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Build;
+import android.os.Bundle;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+
+import com.wag.gamebox.R;
+import com.wag.gamebox.api.BaseUrl;
+import com.wag.gamebox.entity.GameDetails;
+
+import org.xutils.x;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Created by LeBron on 2017/2/14.
+ * 游戏截图
+ */
+
+public class ScreenshotsActivity extends Activity {
+    private ViewPager viewPager;
+    private MyAdapter adapter;
+    private LinearLayout home_circle;
+    private int mPreviousPos;       //上一个页面
+    public static final String  KEY="KEY";
+    GameDetails.DataBean.GameDetailsBean gameDetailsBean;
+
+    public static void actionStart(Context context, GameDetails.DataBean.GameDetailsBean gameDetailsBean){
+        Intent intent=new Intent(context,ScreenshotsActivity.class);
+        intent.putExtra(KEY, (Serializable) gameDetailsBean);
+        context.startActivity(intent );
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_app);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//透明状态栏
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+//透明导航栏
+          //  getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        }
+        initView();
+    }
+
+    public void getImgUrl(){
+        gameDetailsBean= (GameDetails.DataBean.GameDetailsBean) getIntent().getSerializableExtra(KEY);
+    }
+
+    private void initData() {
+        for (int i = 0; i < gameDetailsBean.getFeature_img().size(); i++) {
+            ImageView imageView = new ImageView(x.app());
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT);
+            if (i != 0) {
+                layoutParams.leftMargin = 15;
+                imageView.setLayoutParams(layoutParams);
+                imageView.setEnabled(false);
+            }
+            imageView.setBackgroundResource(R.drawable.indicater_screen);   //被选中圆点变大
+            home_circle.addView(imageView);
+        }
+    }
+
+    private void initView() {
+        viewPager = (ViewPager) findViewById(R.id.viewPager);
+        home_circle = (LinearLayout) findViewById(R.id.home_circle);
+        getImgUrl();  initViewPagerNum();
+
+    }
+
+    private void initViewPagerNum() {
+        initData();
+        adapter = new MyAdapter();
+        viewPager.setAdapter(adapter);
+        viewPager.setOnPageChangeListener(onPageChangeListener);
+    }
+
+
+    ViewPager.OnPageChangeListener onPageChangeListener = new ViewPager.OnPageChangeListener() {
+        @Override
+        public void onPageSelected(int arg0) {
+            int pos = arg0 % gameDetailsBean.getFeature_img().size();
+            home_circle.getChildAt(pos).setEnabled(true);//将选中的页面的圆点设置为红色
+            home_circle.getChildAt(mPreviousPos).setEnabled(false);//上一个页面的圆点设置为灰色
+            mPreviousPos = arg0;  //更新上一个页面的位置
+        }
+
+        @Override
+        public void onPageScrolled(int arg0, float arg1, int arg2) {
+
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int arg0) {
+
+        }
+    };
+
+
+    class MyAdapter extends PagerAdapter {
+        @Override
+        public int getCount() {
+            return gameDetailsBean.getFeature_img().size();
+        }
+
+        @Override
+        public boolean isViewFromObject(View view, Object object) {
+            return view == object;
+        }
+
+        @Override
+        public Object instantiateItem(ViewGroup container, int position) {
+
+            ImageView imageView = new ImageView(getApplicationContext());
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish();
+                }
+            });
+//            Log.e("Screen",BaseUrl.getInstence().ipAddress+gameDetailsBean.getFeature_img().get(position).getUrl());
+            x.image().bind(imageView, BaseUrl.getInstence().ipAddress+gameDetailsBean.getFeature_img().get(position).getUrl());
+            container.addView(imageView);
+            return imageView;
+        }
+
+        @Override
+        public void destroyItem(ViewGroup container, int position, Object object) {
+            container.removeView((View) object);
+        }
+    }
+
+
+}

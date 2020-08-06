@@ -1,0 +1,174 @@
+package com.wag.gamebox.entity;
+
+import com.google.gson.annotations.SerializedName;
+
+/**
+ * Created by James on 2018/11/1.
+ */
+public class WBUserInfo {
+    /**
+     * id : 6812028080
+     * idstr : 6812028080
+     * class : 1
+     * screen_name : 我的幸福89107
+     * name : 我的幸福89107
+     * province : 100
+     * city : 1000
+     * location : 其他
+     * description :
+     * url :
+     * profile_image_url : http://tvax2.sinaimg.cn/crop.0.0.40.40.50/007r0zGEly8fwsf3uvacwj30140143y9.jpg
+     * profile_url : u/6812028080
+     * domain :
+     * weihao :
+     * gender : m
+     */
+
+    private long id;
+    private String idstr;
+    @SerializedName("class")
+    private int classX;
+    private String screen_name;
+    private String name;
+    private String province;
+    private String city;
+    private String location;
+    private String description;
+    private String url;
+    private String profile_image_url;
+    private String profile_url;
+    private String domain;
+    private String weihao;
+
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getIdstr() {
+        return idstr;
+    }
+
+    public void setIdstr(String idstr) {
+        this.idstr = idstr;
+    }
+
+    public int getClassX() {
+        return classX;
+    }
+
+    public void setClassX(int classX) {
+        this.classX = classX;
+    }
+
+    public String getScreen_name() {
+        return screen_name;
+    }
+
+    public void setScreen_name(String screen_name) {
+        this.screen_name = screen_name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getProfile_image_url() {
+        return profile_image_url;
+    }
+
+    public void setProfile_image_url(String profile_image_url) {
+        this.profile_image_url = profile_image_url;
+    }
+
+    public String getProfile_url() {
+        return profile_url;
+    }
+
+    public void setProfile_url(String profile_url) {
+        this.profile_url = profile_url;
+    }
+
+    public String getDomain() {
+        return domain;
+    }
+
+    public void setDomain(String domain) {
+        this.domain = domain;
+    }
+
+    public String getWeihao() {
+        return weihao;
+    }
+
+    public void setWeihao(String weihao) {
+        this.weihao = weihao;
+    }
+
+
+
+
+    public static class InsecurityBean {
+        /**
+         * sexual_content : false
+         */
+
+        private boolean sexual_content;
+
+        public boolean isSexual_content() {
+            return sexual_content;
+        }
+
+        public void setSexual_content(boolean sexual_content) {
+            this.sexual_content = sexual_content;
+        }
+    }
+}

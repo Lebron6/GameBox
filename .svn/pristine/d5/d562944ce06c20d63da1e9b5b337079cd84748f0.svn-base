@@ -1,0 +1,95 @@
+package com.quantark.dlgamebox.ui.activity;
+
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import android.util.Log;
+import android.widget.EditText;
+
+import com.google.gson.Gson;
+import com.quantark.dlgamebox.R;
+import com.quantark.dlgamebox.api.BaseUrl;
+import com.quantark.dlgamebox.api.Constant;
+import com.quantark.dlgamebox.api.HttpRequestUtils;
+import com.quantark.dlgamebox.entity.UpLoadIcon;
+import com.quantark.dlgamebox.tools.PreferenceUtils;
+import com.quantark.dlgamebox.tools.ToastUtil;
+import com.quantark.dlgamebox.ui.view.TitleBarManger;
+import org.xutils.http.RequestParams;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
+/**
+ * Created by James on 2018/10/30.
+ */
+public class FeedBackActivity extends BaseActivity {
+    @BindView(R.id.et_content)
+    EditText etContent;
+
+    @Override
+    protected void initTitle() {
+        TitleBarManger manger=TitleBarManger.getInsetance();
+        manger.setContext(this);
+        manger.setTitle("意见反馈");
+        manger.setBack();
+    }
+
+    public static void actionStart(Context context) {
+        Intent intent = new Intent(context, FeedBackActivity.class);
+        context.startActivity(intent);
+    }
+
+    @Override
+    protected int attachLayoutRes() {
+        return R.layout.activity_feedback;
+    }
+
+    @Override
+    protected void initViews() {
+
+    }
+
+    @Override
+    protected void initDatas() {
+
+    }
+
+    @OnClick(R.id.tv_commit)
+    public void onViewClicked() {
+        if (TextUtils.isEmpty(etContent.getText().toString())){
+            ToastUtil.showToast("请输入反馈内容");
+            return;
+        }else{
+            RequestParams params = new RequestParams(BaseUrl.getInstence().getFeedBackUrl());
+            params.addHeader("token", PreferenceUtils.getInstance().getUserToken());
+            params.addParameter("content", etContent.getText().toString());
+            HttpRequestUtils httpRequestUtils = new HttpRequestUtils(mHandler);
+            httpRequestUtils.doPost(params);
+        }
+    }
+
+    Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case Constant.REQUEST_SUCCESS:
+                    Log.e("获取提交结果", msg.obj.toString());
+                    UpLoadIcon result = new Gson().fromJson(msg.obj.toString(), UpLoadIcon.class);
+                    if (result.getCode().equals("200")) {
+                        ToastUtil.showToast("提交成功");
+                        finish();
+                    } else {
+                        ToastUtil.showToast(result.getMsg());
+                    }
+                    break;
+                case Constant.REQUEST_FAIL:
+                    ToastUtil.showToast(msg.obj.toString());
+                    break;
+            }
+        }
+    };
+}

@@ -1,0 +1,59 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:orientation="vertical"
+    android:background="@color/colorBgGray"
+    >
+
+    <include layout="@layout/top_bar"/>
+<RelativeLayout
+    android:gravity="center_vertical"
+    android:layout_marginTop="10dp"
+    android:background="@color/themeWhite"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="80dp">
+    <ImageView
+        android:layout_centerVertical="true"
+        android:background="@mipmap/icon_balance"
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView  android:layout_centerVertical="true"
+        android:textSize="13sp"
+        android:text="余额"
+        android:layout_marginLeft="50dp"
+        android:textColor="@color/themeGrayText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/tv_ptb_num"
+        android:layout_centerVertical="true"
+        android:textSize="18sp"
+        android:text="20"
+        android:layout_marginLeft="100dp"
+        android:textColor="@color/colorTextBlack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_centerVertical="true"
+        android:id="@+id/tv_buy_ptb"
+        android:layout_width="60dp"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentRight="true"
+        android:layout_height="28.0dip"
+        android:layout_centerInParent="true"
+        android:textColor="@drawable/text_color_selector_m"
+        android:background="@drawable/text_bg_selector_m"
+        android:gravity="center"
+        android:text="充值"
+        android:textSize="14sp"
+        ></TextView>
+</RelativeLayout>
+<android.support.v7.widget.RecyclerView
+    android:layout_marginTop="10dp"
+    android:background="@color/themeWhite"
+    android:id="@+id/rv_buy_list"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+</LinearLayout>

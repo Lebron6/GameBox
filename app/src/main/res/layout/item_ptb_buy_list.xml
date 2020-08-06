@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+<LinearLayout
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="60dp">
+<TextView
+    android:id="@+id/tv_ptb_num"
+    android:layout_marginLeft="20dp"
+    android:text="+100"
+    android:textSize="18sp"
+    android:textColor="@color/themeGrayText"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
+    <TextView
+        android:layout_marginLeft="10dp"
+        android:text="平台币"
+        android:textSize="12sp"
+        android:textColor="@color/themeGrayText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <View
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/themeGrayLine"
+        android:layout_width="0.5dp"
+        android:layout_height="match_parent"/>
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/tv_ptb_get_type"
+            android:layout_marginLeft="10dp"
+            android:text="微信充值获取"
+            android:textSize="11sp"
+            android:textColor="@color/themeGrayText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_ptb_time"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="10dp"
+            android:text="2018-09-06 08:08:08"
+            android:textSize="11sp"
+            android:textColor="@color/themeGrayText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>
+</LinearLayout>

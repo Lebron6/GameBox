@@ -1,0 +1,244 @@
+package com.wag.gamebox.ui.activity;
+
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import com.google.gson.Gson;
+import com.wag.gamebox.R;
+import com.wag.gamebox.api.BaseUrl;
+import com.wag.gamebox.api.Constant;
+import com.wag.gamebox.api.HttpRequestUtils;
+import com.wag.gamebox.entity.QueryHistory;
+import com.wag.gamebox.entity.QueryResult;
+import com.wag.gamebox.tools.DbUtils;
+import com.wag.gamebox.tools.RecyclerViewHelper;
+import com.wag.gamebox.tools.ToastUtil;
+import com.wag.gamebox.ui.adapter.HotGameListAdapter;
+import com.wag.gamebox.ui.adapter.QueryHistoryListAdapter;
+import com.wag.gamebox.ui.view.ClearEditText;
+import com.wag.gamebox.ui.view.LoadingManger;
+import com.wag.gamebox.ui.view.TitleBarManger;
+
+import org.xutils.DbManager;
+import org.xutils.db.Selector;
+import org.xutils.ex.DbException;
+import org.xutils.http.RequestParams;
+
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
+/**
+ * Created by James on 2018/10/8.
+ */
+public class QueryActivity extends BaseActivity {
+
+    @BindView(R.id.iv_back)
+    ImageView ivBack;
+    @BindView(R.id.et_query)
+    ClearEditText etQuery;
+    @BindView(R.id.iv_search)
+    ImageView ivSearch;
+    @BindView(R.id.search_top)
+    RelativeLayout searchTop;
+    @BindView(R.id.rv_search_history)
+    RecyclerView rvSearchHistory;
+    @BindView(R.id.tv_clear_history)
+    TextView tvClearHistory;
+    @BindView(R.id.rv_query_result)
+    RecyclerView rvQueryResult;
+    @BindView(R.id.msg)
+    TextView msg;
+    @BindView(R.id.res)
+    LinearLayout res;
+    @BindView(R.id.loading)
+    ImageView loading;
+    @BindView(R.id.layout_loading)
+    LinearLayout layoutLoading;
+    @BindView(R.id.error)
+    RelativeLayout error;
+    @BindView(R.id.parvant)
+    LinearLayout parvant;
+    @BindView(R.id.layout_query_history)
+    LinearLayout layoutQueryHistory;
+    @BindView(R.id.layout_query_result)
+    LinearLayout layoutQueryResult;
+    private HotGameListAdapter adapter;
+    private DbManager manager;
+
+    public static void actionStart(Context context) {
+        Intent intent = new Intent(context, QueryActivity.class);
+        context.startActivity(intent);
+    }
+
+    @Override
+    protected void initTitle() {
+        if (adapter != null) {
+            adapter.start();
+            adapter.state();
+            adapter.notifyDataSetChanged();
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        if (adapter != null) {
+            adapter.delete();
+        }
+        super.onPause();
+    }
+
+    @Override
+    protected int attachLayoutRes() {
+        return R.layout.activity_query;
+    }
+
+
+    @Override
+    protected void initViews() {
+        manager= DbUtils.getDB();
+        LoadingManger.getInsetance().setView(error);
+        adapter = new HotGameListAdapter(this);
+        initHistoryQueryDataList();
+
+    }
+
+    private void initHistoryQueryDataList() {
+        try {
+            final List<QueryHistory> queryHistories = manager.findAll(QueryHistory.class);
+            if (queryHistories!=null&&queryHistories.size()>0){
+                QueryHistoryListAdapter adapter = new QueryHistoryListAdapter(this);
+                adapter.setDatas(queryHistories);
+                RecyclerViewHelper.initRecyclerViewV(this, rvSearchHistory, false, adapter);
+                adapter.setOnItemClickListener(new QueryHistoryListAdapter.OnItemClickListener() {
+                    @Override
+                    public void onItemLongClick(View view, int position) {
+                        query(queryHistories.get(position).getKeyWord());
+                    }
+                });
+            }else{
+                layoutQueryHistory.setVisibility(View.GONE);
+                layoutQueryResult.setVisibility(View.GONE);
+                LoadingManger.getInsetance().stopFinishLoading("暂无搜索记录",false);
+            }
+        } catch (DbException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void initDatas() {
+
+    }
+
+
+    @OnClick({R.id.iv_back, R.id.iv_search, R.id.tv_clear_history})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.iv_back:
+                finish();
+                break;
+            case R.id.iv_search:
+                if (TextUtils.isEmpty(etQuery.getText().toString())) {
+                    ToastUtil.showToast("请输入游戏名");
+                    return;
+                } else {
+                    query(etQuery.getText().toString());
+                    saveQuery(etQuery.getText().toString());
+                }
+                break;
+            case R.id.tv_clear_history:
+                clearQueryHistory();
+                break;
+        }
+    }
+
+    private void clearQueryHistory() {
+        try {
+            manager.delete(QueryHistory.class);
+            layoutQueryResult.setVisibility(View.GONE);
+            layoutQueryHistory.setVisibility(View.GONE);
+            LoadingManger.getInsetance().stopFinishLoading("暂无搜索记录",false);
+        } catch (DbException e) {
+            e.printStackTrace();
+            ToastUtil.showToast("清除失败");
+        }
+    }
+
+    private void saveQuery(String s) {
+        QueryHistory queryHistory=new QueryHistory();
+        queryHistory.setKeyWord(s);
+        try {
+            manager.save(queryHistory);
+        } catch (DbException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void query(String keyWord) {
+        LoadingManger.getInsetance().startLoading();
+        RequestParams params = new RequestParams(BaseUrl.getInstence().getSearchGameUrl());
+        params.addParameter("keyword", keyWord);
+        HttpRequestUtils requestUtils = new HttpRequestUtils(mHandler);
+        requestUtils.doGet(params);
+    }
+
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case Constant.REQUEST_SUCCESS:
+                    Log.e("获取查询结果", msg.obj.toString());
+                    try {
+                        final QueryResult result = new Gson().fromJson(msg.obj.toString(), QueryResult.class);
+                        if (result.getCode().equals("200") ) {
+                            if (result.getData() != null && result.getData().size() > 0) {
+                                layoutQueryHistory.setVisibility(View.GONE);
+                                layoutQueryResult.setVisibility(View.VISIBLE);
+                                LoadingManger.getInsetance().stopFinishLoading(true);
+                                adapter.setDatas(result.getData());
+                                RecyclerViewHelper.initRecyclerViewV(QueryActivity.this, rvQueryResult, true, adapter,true);
+                                adapter.setOnItemClickListener(new HotGameListAdapter.OnItemClickListener() {
+                                    @Override
+                                    public void onItemLongClick(View view, int position) {
+                                        GameDeatailsActivity.actionStart(QueryActivity.this,  result.getData().get(position).getId());
+                                    }
+                                });
+                            } else {
+                                layoutQueryHistory.setVisibility(View.GONE);
+                                layoutQueryResult.setVisibility(View.GONE);
+                                LoadingManger.getInsetance().stopFinishLoading("暂无搜索结果", false);
+                            }
+                        } else {
+                            layoutQueryHistory.setVisibility(View.GONE);
+                            layoutQueryResult.setVisibility(View.GONE);
+                            LoadingManger.getInsetance().stopFinishLoading("暂无搜索结果", false);
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        LoadingManger.getInsetance().stopFinishLoading("暂无搜索结果", false);
+                    }
+                    break;
+                case Constant.REQUEST_FAIL:
+                    LoadingManger.getInsetance().stopFinishLoading("网络连接异常", false);
+                    Log.e("获取查询结果", msg.obj.toString());
+                    break;
+            }
+        }
+    };
+
+}

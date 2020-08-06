@@ -1,0 +1,33 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:orientation="vertical"
+    >
+
+   <include layout="@layout/top_bar" android:id="@+id/top_bar"/>
+
+   <RelativeLayout
+       android:layout_below="@+id/top_bar"
+       android:id="@+id/sx"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:background="@color/themeWhite"
+       >
+      <com.wag.gamebox.ui.view.SpringView
+          android:id="@+id/sv_hot_game"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent">
+         <android.support.v7.widget.RecyclerView
+             android:id="@+id/rv_hot_game"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+         </android.support.v7.widget.RecyclerView>
+      </com.wag.gamebox.ui.view.SpringView>
+
+   </RelativeLayout>
+   <LinearLayout
+       android:layout_below="@+id/top_bar"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+      <include layout="@layout/error_layout"/></LinearLayout>
+</RelativeLayout>

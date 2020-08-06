@@ -1,0 +1,45 @@
+{
+    "logs": [
+        {
+            "outputFile": "E:\\MGWorkSpace\\androidworkspace\\dlgamebox\\app\\build\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-v19\\values-v19.xml",
+            "map": [
+                {
+                    "source": "E:\\MGWorkSpace\\androidworkspace\\dlgamebox\\app\\src\\main\\res\\values-v19\\dimens.xml",
+                    "from": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "38",
+                        "endColumns": "49",
+                        "endOffsets": "83"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "49",
+                        "endOffsets": "100"
+                    }
+                },
+                {
+                    "source": "E:\\MGWorkSpace\\androidworkspace\\dlgamebox\\app\\src\\main\\res\\values-v19\\styles.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "4",
+                        "startOffsets": "93",
+                        "endLines": "6",
+                        "endColumns": "12",
+                        "endOffsets": "217"
+                    },
+                    "to": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "105",
+                        "endLines": "5",
+                        "endColumns": "12",
+                        "endOffsets": "229"
+                    }
+                }
+            ]
+        }
+    ]
+}

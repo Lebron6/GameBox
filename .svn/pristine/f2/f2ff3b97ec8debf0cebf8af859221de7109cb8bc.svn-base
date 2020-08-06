@@ -1,0 +1,21 @@
+// Generated code. Do not modify!
+package com.quantark.dlgamebox.ui.activity;
+
+import com.zhy.m.permission.*;
+
+public class WelComeActivity$$PermissionProxy implements PermissionProxy<WelComeActivity> {
+@Override
+ public void grant(WelComeActivity source , int requestCode) {
+switch(requestCode) {case 1:source.requestSdcardSuccess();break;}  }
+@Override
+ public void denied(WelComeActivity source , int requestCode) {
+switch(requestCode) {case 1:source.requestSdcardFailed();break;}  }
+@Override
+ public void rationale(WelComeActivity source , int requestCode) {
+switch(requestCode) {}  }
+@Override
+ public boolean needShowRationale(int requestCode) {
+switch(requestCode) {}
+return false;  }
+
+}

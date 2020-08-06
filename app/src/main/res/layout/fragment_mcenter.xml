@@ -1,0 +1,252 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:orientation="vertical"
+    android:background="@color/themeWhite">
+
+<RelativeLayout
+    android:background="@mipmap/pc_bg"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:id="@+id/layout_user_info"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginTop="70dp"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/iv_user_icon"
+            android:background="@mipmap/txrw"
+            android:layout_width="100dp"
+            android:layout_height="100dp" />
+        <TextView
+            android:layout_marginTop="10dp"
+            android:textSize="18dp"
+            android:textColor="@color/themeWhite"
+            android:text="点击登录"
+            android:id="@+id/tv_to_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+
+        android:id="@+id/layout_vip"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_below="@+id/layout_user_info"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        <TextView
+            android:text=""
+            android:gravity="center"
+            android:id="@+id/tv_vip_level"
+            android:background="@drawable/text_bg_vip_m"
+            android:layout_width="40dp"
+            android:textColor="@color/themeWhite"
+            android:layout_height="25dp" />
+        <ProgressBar
+            android:id="@+id/progress_vip"
+            android:layout_marginLeft="10dp"
+            style="@style/ProgressBar_Mini1"
+            android:layout_width="150dp"
+            android:layout_height="9dp"
+            android:layout_gravity="center"
+            android:max="100"
+            android:progress="20" />
+        <TextView
+            android:id="@+id/tv_vip_process"
+            android:text="   "
+            android:layout_marginLeft="10dp"
+            android:textSize="15sp"
+            android:textColor="@color/themeYellow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_see_th"
+            android:text="查看特权"
+            android:layout_marginLeft="10dp"
+            android:textSize="14sp"
+            android:textColor="@color/themeYellow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <RelativeLayout
+        android:id="@+id/layout_ptb"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="12dp"
+        android:layout_below="@+id/layout_vip"
+        android:background="@drawable/layout_bg_ptb"
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+        <TextView
+            android:layout_centerVertical="true"
+            android:id="@+id/tv_nomal_myptb"
+            android:textSize="14sp"
+            android:layout_marginLeft="30dp"
+            android:text="我的平台币"
+            android:textColor="@color/themeGrayText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_ptb_num"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/tv_nomal_myptb"
+            android:textSize="18sp"
+            android:layout_marginLeft="20dp"
+            android:text="  "
+            android:textColor="@color/themeYellow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_to_buy_ptb"
+            android:padding="5dp"
+            android:textColor="@color/themeWhite"
+            android:background="@drawable/text_bg_czptb_m"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="30dp"
+            android:layout_alignParentRight="true"
+            android:text="充值"
+            android:gravity="center"
+            android:layout_width="60dp"
+            android:layout_height="30dp" />
+    </RelativeLayout>
+</RelativeLayout>
+    <LinearLayout
+        android:layout_marginTop="40dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:id="@+id/layout_updata"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:background="@mipmap/pc_icon_update"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:textSize="14sp"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/colorTextBlack"
+                    android:text="检查更新"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/layout_my_game"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:background="@mipmap/pc_icon_games"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:textSize="14sp"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/colorTextBlack"
+                    android:text="我的游戏"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_clear"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:background="@mipmap/pc_icon_clear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:textSize="14sp"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/colorTextBlack"
+                    android:text="缓存清理"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/layout_share_app"
+                android:gravity="center" android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:background="@mipmap/pc_icon_share"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:textSize="14sp"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/colorTextBlack"
+                    android:text="分享APP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/layout_call_service"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:background="@mipmap/pc_icon_service"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:textSize="14sp"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/colorTextBlack"
+                    android:text="关于我们"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:visibility="invisible"
+                android:id="@+id/layout_my_gifts"
+                android:gravity="center" android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:background="@mipmap/pc_icon_gift"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:textSize="14sp"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/colorTextBlack"
+                    android:text="我的礼包"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

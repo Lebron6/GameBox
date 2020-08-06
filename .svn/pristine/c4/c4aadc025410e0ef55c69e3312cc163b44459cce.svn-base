@@ -1,0 +1,118 @@
+// Generated code from Butter Knife. Do not modify!
+package com.quantark.dlgamebox.ui.fragment.ranking;
+
+import android.support.annotation.CallSuper;
+import android.support.annotation.UiThread;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import butterknife.Unbinder;
+import butterknife.internal.DebouncingOnClickListener;
+import butterknife.internal.Utils;
+import com.quantark.dlgamebox.R;
+import com.quantark.dlgamebox.ui.view.FilletImageView;
+import com.quantark.dlgamebox.ui.view.SpringView;
+import java.lang.IllegalStateException;
+import java.lang.Override;
+
+public class NewAndHotRanking_ViewBinding implements Unbinder {
+  private NewAndHotRanking target;
+
+  private View view2131165519;
+
+  private View view2131165521;
+
+  private View view2131165520;
+
+  @UiThread
+  public NewAndHotRanking_ViewBinding(final NewAndHotRanking target, View source) {
+    this.target = target;
+
+    View view;
+    target.svRanking = Utils.findRequiredViewAsType(source, R.id.sv_ranking, "field 'svRanking'", SpringView.class);
+    target.linearLayoutTop2 = Utils.findRequiredViewAsType(source, R.id.linearLayout_Top2, "field 'linearLayoutTop2'", LinearLayout.class);
+    target.linearLayoutTop3 = Utils.findRequiredViewAsType(source, R.id.linearLayout_Top3, "field 'linearLayoutTop3'", LinearLayout.class);
+    target.relativeLayoutRanking = Utils.findRequiredViewAsType(source, R.id.relativeLayout_Ranking, "field 'relativeLayoutRanking'", LinearLayout.class);
+    target.rankingLine = Utils.findRequiredView(source, R.id.ranking_line, "field 'rankingLine'");
+    target.msg = Utils.findRequiredViewAsType(source, R.id.msg, "field 'msg'", TextView.class);
+    target.res = Utils.findRequiredViewAsType(source, R.id.res, "field 'res'", LinearLayout.class);
+    target.loading = Utils.findRequiredViewAsType(source, R.id.loading, "field 'loading'", ImageView.class);
+    target.layoutLoading = Utils.findRequiredViewAsType(source, R.id.layout_loading, "field 'layoutLoading'", LinearLayout.class);
+    target.error = Utils.findRequiredViewAsType(source, R.id.error, "field 'error'", RelativeLayout.class);
+    target.rankingImgTop2 = Utils.findRequiredViewAsType(source, R.id.ranking_img_top2, "field 'rankingImgTop2'", FilletImageView.class);
+    target.rankingTop2GameName = Utils.findRequiredViewAsType(source, R.id.ranking_top2_game_name, "field 'rankingTop2GameName'", TextView.class);
+    view = Utils.findRequiredView(source, R.id.tv_down_load_one, "field 'tvDownLoadOne' and method 'onViewClicked'");
+    target.tvDownLoadOne = Utils.castView(view, R.id.tv_down_load_one, "field 'tvDownLoadOne'", TextView.class);
+    view2131165519 = view;
+    view.setOnClickListener(new DebouncingOnClickListener() {
+      @Override
+      public void doClick(View p0) {
+        target.onViewClicked(p0);
+      }
+    });
+    target.rankingImgTop1 = Utils.findRequiredViewAsType(source, R.id.ranking_img_top1, "field 'rankingImgTop1'", FilletImageView.class);
+    target.rankingTop1GameName = Utils.findRequiredViewAsType(source, R.id.ranking_top1_game_name, "field 'rankingTop1GameName'", TextView.class);
+    view = Utils.findRequiredView(source, R.id.tv_down_load_two, "field 'tvDownLoadTwo' and method 'onViewClicked'");
+    target.tvDownLoadTwo = Utils.castView(view, R.id.tv_down_load_two, "field 'tvDownLoadTwo'", TextView.class);
+    view2131165521 = view;
+    view.setOnClickListener(new DebouncingOnClickListener() {
+      @Override
+      public void doClick(View p0) {
+        target.onViewClicked(p0);
+      }
+    });
+    target.rankingImgTop3 = Utils.findRequiredViewAsType(source, R.id.ranking_img_top3, "field 'rankingImgTop3'", FilletImageView.class);
+    target.rankingTop3GameName = Utils.findRequiredViewAsType(source, R.id.ranking_top3_game_name, "field 'rankingTop3GameName'", TextView.class);
+    view = Utils.findRequiredView(source, R.id.tv_down_load_three, "field 'tvDownLoadThree' and method 'onViewClicked'");
+    target.tvDownLoadThree = Utils.castView(view, R.id.tv_down_load_three, "field 'tvDownLoadThree'", TextView.class);
+    view2131165520 = view;
+    view.setOnClickListener(new DebouncingOnClickListener() {
+      @Override
+      public void doClick(View p0) {
+        target.onViewClicked(p0);
+      }
+    });
+    target.rvRanking = Utils.findRequiredViewAsType(source, R.id.rv_ranking, "field 'rvRanking'", RecyclerView.class);
+    target.linearLayoutTop1 = Utils.findRequiredViewAsType(source, R.id.linearLayout_Top1, "field 'linearLayoutTop1'", LinearLayout.class);
+  }
+
+  @Override
+  @CallSuper
+  public void unbind() {
+    NewAndHotRanking target = this.target;
+    if (target == null) throw new IllegalStateException("Bindings already cleared.");
+    this.target = null;
+
+    target.svRanking = null;
+    target.linearLayoutTop2 = null;
+    target.linearLayoutTop3 = null;
+    target.relativeLayoutRanking = null;
+    target.rankingLine = null;
+    target.msg = null;
+    target.res = null;
+    target.loading = null;
+    target.layoutLoading = null;
+    target.error = null;
+    target.rankingImgTop2 = null;
+    target.rankingTop2GameName = null;
+    target.tvDownLoadOne = null;
+    target.rankingImgTop1 = null;
+    target.rankingTop1GameName = null;
+    target.tvDownLoadTwo = null;
+    target.rankingImgTop3 = null;
+    target.rankingTop3GameName = null;
+    target.tvDownLoadThree = null;
+    target.rvRanking = null;
+    target.linearLayoutTop1 = null;
+
+    view2131165519.setOnClickListener(null);
+    view2131165519 = null;
+    view2131165521.setOnClickListener(null);
+    view2131165521 = null;
+    view2131165520.setOnClickListener(null);
+    view2131165520 = null;
+  }
+}

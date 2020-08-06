@@ -1,0 +1,223 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+   >
+    <com.quantark.dlgamebox.ui.view.SpringView
+        android:id="@+id/sv_ranking"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/relativeLayout_Ranking"
+                android:layout_width="match_parent"
+                android:layout_height="190dp"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <LinearLayout
+                    android:id="@+id/linearLayout_Top2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:paddingTop="10dp">
+
+                    <com.quantark.dlgamebox.ui.view.FilletImageView
+                        android:id="@+id/ranking_img_top2"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@mipmap/ic_launcher" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@mipmap/ranking_bg2"
+                        android:gravity="bottom|center_horizontal"
+                        android:orientation="vertical"
+                        android:paddingTop="10dp">
+                        <RelativeLayout
+                            android:layout_marginTop="10dp"
+                            android:layout_width="30dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center_horizontal"
+                            android:background="@mipmap/ranking_two">
+
+                        </RelativeLayout>
+                        <TextView
+                            android:id="@+id/ranking_top2_game_name"
+                            android:text="风云雄霸天下"
+                            android:layout_marginTop="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:maxLength="6"
+                            android:textColor="@color/colorTextBlack"
+                            android:textSize="15sp" />
+
+
+                        <TextView
+                            android:id="@+id/tv_down_load_one"
+                            android:layout_width="match_parent"
+                            android:layout_height="25dp"
+                            android:layout_marginLeft="30dp"
+                            android:layout_marginRight="30dp"
+                            android:layout_marginTop="10dp"
+                            android:textColor="@drawable/text_color_selector_m"
+                            android:background="@drawable/text_bg_selector_m"
+                            android:gravity="center"
+                            android:text="下载"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout_Top1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+
+
+                    <com.quantark.dlgamebox.ui.view.FilletImageView
+                        android:id="@+id/ranking_img_top1"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:background="@mipmap/ic_launcher"
+                        android:layout_gravity="center_horizontal"
+                         />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@mipmap/ranking_bg1"
+                        android:gravity="bottom|center_horizontal"
+                        android:orientation="vertical"
+
+                        android:paddingTop="10dp">
+                        <RelativeLayout
+                            android:layout_marginTop="10dp"
+                            android:layout_width="30dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center_horizontal"
+                            android:background="@mipmap/ranking_one">
+
+                        </RelativeLayout>
+                        <TextView
+                            android:id="@+id/ranking_top1_game_name"
+                            android:text="风云雄霸天下"
+                            android:layout_marginTop="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:maxLength="6"
+                            android:textColor="@color/colorTextBlack"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:id="@+id/tv_down_load_two"
+                            android:layout_width="match_parent"
+                            android:layout_height="25dp"
+                            android:layout_marginLeft="30dp"
+                            android:layout_marginRight="30dp"
+                            android:layout_marginTop="10dp"
+                            android:textColor="@drawable/text_color_selector_m"
+                            android:background="@drawable/text_bg_selector_m"
+                            android:gravity="center"
+                            android:text="下载"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout_Top3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:paddingTop="10dp">
+
+
+
+                    <com.quantark.dlgamebox.ui.view.FilletImageView
+                        android:id="@+id/ranking_img_top3"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:background="@mipmap/ic_launcher"
+                        android:layout_gravity="center_horizontal"
+                         />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@mipmap/ranking_bg3"
+                        android:gravity="center"
+                        android:orientation="vertical"
+
+                        android:paddingTop="10dp">
+                        <RelativeLayout
+                            android:layout_marginTop="10dp"
+                            android:layout_width="30dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center_horizontal"
+                            android:background="@mipmap/ranking_three">
+
+
+                        </RelativeLayout>
+                        <TextView
+                            android:id="@+id/ranking_top3_game_name"
+                            android:text="风云雄霸天下"
+                            android:layout_marginTop="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:maxLength="6"
+                            android:textColor="@color/colorTextBlack"
+                            android:textSize="15sp" />
+
+
+                        <TextView
+                            android:id="@+id/tv_down_load_three"
+                            android:layout_width="match_parent"
+                            android:layout_height="25dp"
+                            android:layout_marginLeft="30dp"
+                            android:layout_marginRight="30dp"
+                            android:layout_marginTop="10dp"
+                            android:textColor="@drawable/text_color_selector_m"
+                            android:background="@drawable/text_bg_selector_m"
+                            android:gravity="center"
+                            android:text="下载"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:id="@+id/ranking_line"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_below="@+id/relativeLayout_Ranking"
+                android:background="@color/themeGrayLine" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_ranking"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/ranking_line"></android.support.v7.widget.RecyclerView>
+        </RelativeLayout>
+</ScrollView>
+
+    </com.quantark.dlgamebox.ui.view.SpringView>
+    <include layout="@layout/error_layout"/>
+</RelativeLayout>

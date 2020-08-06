@@ -1,0 +1,110 @@
+// Generated code from Butter Knife. Do not modify!
+package com.quantark.dlgamebox.ui.activity;
+
+import android.support.annotation.CallSuper;
+import android.support.annotation.UiThread;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import butterknife.Unbinder;
+import butterknife.internal.DebouncingOnClickListener;
+import butterknife.internal.Utils;
+import com.quantark.dlgamebox.R;
+import com.quantark.dlgamebox.ui.view.ClearEditText;
+import java.lang.IllegalStateException;
+import java.lang.Override;
+
+public class QueryActivity_ViewBinding implements Unbinder {
+  private QueryActivity target;
+
+  private View view2131165325;
+
+  private View view2131165329;
+
+  private View view2131165513;
+
+  @UiThread
+  public QueryActivity_ViewBinding(QueryActivity target) {
+    this(target, target.getWindow().getDecorView());
+  }
+
+  @UiThread
+  public QueryActivity_ViewBinding(final QueryActivity target, View source) {
+    this.target = target;
+
+    View view;
+    view = Utils.findRequiredView(source, R.id.iv_back, "field 'ivBack' and method 'onViewClicked'");
+    target.ivBack = Utils.castView(view, R.id.iv_back, "field 'ivBack'", ImageView.class);
+    view2131165325 = view;
+    view.setOnClickListener(new DebouncingOnClickListener() {
+      @Override
+      public void doClick(View p0) {
+        target.onViewClicked(p0);
+      }
+    });
+    target.etQuery = Utils.findRequiredViewAsType(source, R.id.et_query, "field 'etQuery'", ClearEditText.class);
+    view = Utils.findRequiredView(source, R.id.iv_search, "field 'ivSearch' and method 'onViewClicked'");
+    target.ivSearch = Utils.castView(view, R.id.iv_search, "field 'ivSearch'", ImageView.class);
+    view2131165329 = view;
+    view.setOnClickListener(new DebouncingOnClickListener() {
+      @Override
+      public void doClick(View p0) {
+        target.onViewClicked(p0);
+      }
+    });
+    target.searchTop = Utils.findRequiredViewAsType(source, R.id.search_top, "field 'searchTop'", RelativeLayout.class);
+    target.rvSearchHistory = Utils.findRequiredViewAsType(source, R.id.rv_search_history, "field 'rvSearchHistory'", RecyclerView.class);
+    view = Utils.findRequiredView(source, R.id.tv_clear_history, "field 'tvClearHistory' and method 'onViewClicked'");
+    target.tvClearHistory = Utils.castView(view, R.id.tv_clear_history, "field 'tvClearHistory'", TextView.class);
+    view2131165513 = view;
+    view.setOnClickListener(new DebouncingOnClickListener() {
+      @Override
+      public void doClick(View p0) {
+        target.onViewClicked(p0);
+      }
+    });
+    target.rvQueryResult = Utils.findRequiredViewAsType(source, R.id.rv_query_result, "field 'rvQueryResult'", RecyclerView.class);
+    target.msg = Utils.findRequiredViewAsType(source, R.id.msg, "field 'msg'", TextView.class);
+    target.res = Utils.findRequiredViewAsType(source, R.id.res, "field 'res'", LinearLayout.class);
+    target.loading = Utils.findRequiredViewAsType(source, R.id.loading, "field 'loading'", ImageView.class);
+    target.layoutLoading = Utils.findRequiredViewAsType(source, R.id.layout_loading, "field 'layoutLoading'", LinearLayout.class);
+    target.error = Utils.findRequiredViewAsType(source, R.id.error, "field 'error'", RelativeLayout.class);
+    target.parvant = Utils.findRequiredViewAsType(source, R.id.parvant, "field 'parvant'", LinearLayout.class);
+    target.layoutQueryHistory = Utils.findRequiredViewAsType(source, R.id.layout_query_history, "field 'layoutQueryHistory'", LinearLayout.class);
+    target.layoutQueryResult = Utils.findRequiredViewAsType(source, R.id.layout_query_result, "field 'layoutQueryResult'", LinearLayout.class);
+  }
+
+  @Override
+  @CallSuper
+  public void unbind() {
+    QueryActivity target = this.target;
+    if (target == null) throw new IllegalStateException("Bindings already cleared.");
+    this.target = null;
+
+    target.ivBack = null;
+    target.etQuery = null;
+    target.ivSearch = null;
+    target.searchTop = null;
+    target.rvSearchHistory = null;
+    target.tvClearHistory = null;
+    target.rvQueryResult = null;
+    target.msg = null;
+    target.res = null;
+    target.loading = null;
+    target.layoutLoading = null;
+    target.error = null;
+    target.parvant = null;
+    target.layoutQueryHistory = null;
+    target.layoutQueryResult = null;
+
+    view2131165325.setOnClickListener(null);
+    view2131165325 = null;
+    view2131165329.setOnClickListener(null);
+    view2131165329 = null;
+    view2131165513.setOnClickListener(null);
+    view2131165513 = null;
+  }
+}
